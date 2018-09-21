@@ -19,8 +19,8 @@ class CreateUserRolesTable extends Migration
         });
 
         Schema::table('users', function(Blueprint $t){
-            $t->integer('user_role')->nullable()->unsigned()->default('1');
-            $t->foreign('user_role')->references('id')->on('user_roles');
+            $t->integer('role_id')->nullable()->unsigned()->default('1');
+            $t->foreign('role_id')->references('id')->on('user_roles');
         });
     }
 
