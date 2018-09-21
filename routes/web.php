@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');      //Makes the site login-only since /home will
+Route::get('/home', 'HomeController@index')->name('home');  //redirect to /login if the user is not authenticated.
