@@ -13,4 +13,4 @@
 
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');      //Makes the site login-only since /home will
-Route::get('/home', 'HomeController@index')->name('home');  //redirect to /login if the user is not authenticated.
+Route::get('/home', 'HomeController@index')->name('home');  //redirect to /login if the user is not authenticated. If he is logged in redirects to the dashboard.

@@ -1,3 +1,4 @@
+@php $url = url()->full(); @endphp
 <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
@@ -10,7 +11,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
+                @guest
 
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('home')}}">{{__('Home')}}</a>
+                    </li>
+                @endguest
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -46,3 +53,21 @@
         </div>
     </div>
 </nav>
+
+<script>
+    url = '{{$url}}';
+    // link = $('.nav-item.nav-link').element('href');
+    //
+    // $('.nav-item').each(function(){
+    //         if(url === link){
+    //             $('.nav-item.nav-link').addClass('active');
+    //         }
+    //     }
+    //
+    // );
+
+    $(document).ready(function(){
+        console.log(' test')
+    })
+
+</script>
