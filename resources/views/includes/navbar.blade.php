@@ -1,8 +1,8 @@
-@php $url = url()->full(); @endphp
+@php $url = url()->full();$base_url = url('/'); @endphp
 <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
+            {{ config('app.name', 'ROC Drones') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
@@ -15,7 +15,7 @@
 
                 @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('home')}}">{{__('Home')}}</a>
+                        <a class="nav-link" id="home" href="{{route('home')}}">{{__('Home')}}</a>
                     </li>
                 @endguest
             </ul>
@@ -55,19 +55,16 @@
 </nav>
 
 <script>
-    url = '{{$url}}';
-    // link = $('.nav-item.nav-link').element('href');
-    //
-    // $('.nav-item').each(function(){
-    //         if(url === link){
-    //             $('.nav-item.nav-link').addClass('active');
-    //         }
-    //     }
-    //
-    // );
-
-    $(document).ready(function(){
-        console.log(' test')
-    })
-
+    url = '{{$url}}'; //Gets url from php variable
+    base_url = '{{$base_url}}'; //Gets base url from php variable (/)
+    $('.nav-item .nav-link').each(function(){
+            link = $('.nav-item a').attr('href');
+            if(url === link){
+                $(this).addClass('active');
+            }
+        }
+    );
+    if(url === base_url){
+        $('#home').addClass('active');
+    }
 </script>
