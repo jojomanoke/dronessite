@@ -23,17 +23,17 @@ if($form != null || $form != '[]'){
     @while(count($parts) > $current)
         @php $part = $parts[$current] @endphp
         @csrf
-        <div id="accordion">
+        <div id="accordion_{{$current}}">
             <div class="card">
-                <div class="card-header" id="headingOne">
+                <div class="card-header" id="heading_{{$current}}">
                     <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_{{$current}}" aria-expanded="true" aria-controls="collapse_{{$current}}">
                             {{ucwords(str_replace('_', ' ', $parts[$current]))}}
                         </button>
                     </h5>
                 </div>
 
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div id="collapse_{{$current}}" class="collapse show" aria-labelledby="heading_{{$current}}" data-parent="#accordion_{{$current}}">
                     <div class="card-body">
                         <div class="row">
                             @if(isset($form[$current]))
