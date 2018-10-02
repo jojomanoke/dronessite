@@ -36,7 +36,7 @@ class FormController extends Controller
             $data = new OperationalFlightPlan();
         }
 
-        return view('forms.submits.operationalFlightPlan');
+        return view('forms.submits.operationalFlightPlan', ['data' => $data]);
     }
 
     public function operational_flight_plan_save(Request $r, $id = null)
