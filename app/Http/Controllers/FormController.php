@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Form;
+use App\OperationalFlightPlan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -26,12 +27,23 @@ class FormController extends Controller
         return view('forms.submitOverview', ['form' => $form]);
     }
 
-    public function operational_flight_plan_edit()
+    public function operational_flight_plan_edit($id = null)
+    {
+        if($id != null){
+            $data = OperationalFlightPlan::all()->where('id', $id);
+        }
+        else{
+            $data = new OperationalFlightPlan();
+        }
+
+        return view('forms.submits.operationalFlightPlan', ['data' => $data]);
+    }
+
+    public function operational_flight_plan_save(Request $r, $id = null)
     {
 
-
-        return view('forms.submits.operationalFlightPlan');
     }
+
     public function pre_site_survey()
     {
 

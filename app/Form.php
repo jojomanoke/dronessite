@@ -11,4 +11,8 @@ class Form extends Model
     public function user(){
         return $this->hasOne('App\User', 'id', 'foreign_id');
     }
+
+    public function operational_flight_plan(){
+        return $this->hasOne('App\OperationalFlightPlan', 'id', 'operational_flight_plan');
+    }
 }
