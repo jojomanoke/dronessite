@@ -23,6 +23,9 @@ Route::prefix('forms')->middleware('auth')->group(function(){
     Route::get('overview', 'FormController@index');
     Route::prefix('submit')->group(function(){
         Route::get('progress', 'FormController@submitOverview');
-        Route::get('operational_flight_plan', 'FormController@operational_flight_plan_edit');
+        Route::get('operational_flight_plan/{id?}', 'FormController@operational_flight_plan_edit');
+    });
+    Route::prefix('save')->group(function(){
+        Route::post('operational_flight_plan/{id?}', 'FormController@operational_flight_plan_save');
     });
 });
