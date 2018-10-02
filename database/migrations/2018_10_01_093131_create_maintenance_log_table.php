@@ -24,7 +24,7 @@ class CreateMaintenanceLogTable extends Migration
         });
 
         Schema::table('submitted_forms', function(Blueprint $t){
-            $t->integer('maintenance_log')->unsigned()->nullable()->change();
+            $t->integer('maintenance_log')->nullable()->unsigned()->change();
             $t->foreign('maintenance_log')->references('id')->on('maintenance_log');
         });
     }

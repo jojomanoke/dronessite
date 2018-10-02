@@ -37,7 +37,7 @@ class CreateOnSiteSurveyTable extends Migration
         });
 
         Schema::table('submitted_forms', function(Blueprint $t){
-            $t->integer('on_site_survey')->unsigned()->nullable()->change();
+            $t->integer('on_site_survey')->nullable()->unsigned()->change();
             $t->foreign('on_site_survey')->references('id')->on('on_site_survey');
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePreSiteSurvey extends Migration
+class CreatePreSiteSurveyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -48,7 +48,7 @@ class CreatePreSiteSurvey extends Migration
         });
 
         Schema::table('submitted_forms', function(Blueprint $t){
-            $t->integer('pre_site_survey')->unsigned()->nullable()->change();
+            $t->integer('pre_site_survey')->nullable()->unsigned()->change();
             $t->foreign('pre_site_survey')->references('id')->on('pre_site_survey');
         });
     }

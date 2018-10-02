@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePreFlightChecklist extends Migration
+class CreatePreFlightChecklistTable extends Migration
 {
     /**
      * Run the migrations.
@@ -36,11 +36,11 @@ class CreatePreFlightChecklist extends Migration
             $t->boolean('take_off')->nullable();
             $t->boolean('communication')->nullable();
             $t->boolean('landing')->nullable();
+        });
 
-            Schema::table('submitted_forms', function(Blueprint $t){
-                $t->integer('pre_flight_checklist')->unsigned()->nullable()->change();
-                $t->foreign('pre_flight_checklist')->references('id')->on('pre_flight_checklist');
-            });
+        Schema::table('submitted_forms', function(Blueprint $t){
+            $t->integer('pre_flight_checklist')->nullable()->unsigned()->change();
+            $t->foreign('pre_flight_checklist')->references('id')->on('pre_flight_checklist');
         });
     }
 

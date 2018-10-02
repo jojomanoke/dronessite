@@ -33,7 +33,7 @@ class CreateArrivalFlightChecklistTable extends Migration
         });
 
         Schema::table('submitted_forms', function(Blueprint $t){
-            $t->integer('arrival_flight_checklist')->unsigned()->nullable()->change();
+            $t->integer('arrival_flight_checklist')->nullable()->unsigned()->change();
             $t->foreign('arrival_flight_checklist')->references('id')->on('arrival_flight_checklist');
         });
     }

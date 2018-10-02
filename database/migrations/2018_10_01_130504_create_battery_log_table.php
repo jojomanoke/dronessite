@@ -25,7 +25,7 @@ class CreateBatteryLogTable extends Migration
         });
 
         Schema::table('submitted_forms', function(Blueprint $t){
-            $t->integer('battery_log')->unsigned()->nullable();
+            $t->integer('battery_log')->nullable()->unsigned()->change();
             $t->foreign('battery_log')->references('id')->on('battery_log');
         });
     }

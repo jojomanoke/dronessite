@@ -28,7 +28,7 @@ class CreatePostFlightChecklistTable extends Migration
         });
 
         Schema::table('submitted_forms', function(Blueprint $t){
-            $t->integer('post_flight_checklist')->unsigned()->nullable();
+            $t->integer('post_flight_checklist')->unsigned()->nullable()->change();
             $t->foreign('post_flight_checklist')->references('id')->on('post_flight_checklist');
         });
     }

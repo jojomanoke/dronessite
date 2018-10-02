@@ -15,23 +15,23 @@ class CreateAircraftPilotAndCrewFlightLogsTable extends Migration
     {
         Schema::create('aircraft_pilot_and_crew_flight_logs', function (Blueprint $t) {
             $t->increments('id');
-            $t->date('date')->unsigned();
-            $t->time('take_off_time')->unsigned();
-            $t->time('landing_time')->unsigned();
-            $t->integer('duration')->unsigned();
-            $t->string('aircraft')->unsigned();
-            $t->string('aircraft_system')->unsigned();
-            $t->string('engine_battery_no')->unsigned();
-            $t->string('pilot_in_command')->unsigned();
-            $t->string('observer')->unsigned();
-            $t->string('payload_operator')->unsigned();
-            $t->string('location')->unsigned();
-            $t->string('purpose_of_flight')->unsigned();
-            $t->string('comments')->unsigned();
+            $t->date('date')->nullable();
+            $t->time('take_off_time')->nullable();
+            $t->time('landing_time')->nullable();
+            $t->integer('duration')->nullable();
+            $t->string('aircraft')->nullable();
+            $t->string('aircraft_system')->nullable();
+            $t->string('engine_battery_no')->nullable();
+            $t->string('pilot_in_command')->nullable();
+            $t->string('observer')->nullable();
+            $t->string('payload_operator')->nullable();
+            $t->string('location')->nullable();
+            $t->string('purpose_of_flight')->nullable();
+            $t->string('comments')->nullable();
         });
 
         Schema::table('submitted_forms', function(Blueprint $t){
-            $t->integer('aircraft_pilot_and_crew_flight_logs')->unsigned()->nullable()->change();
+            $t->integer('aircraft_pilot_and_crew_flight_logs')->nullable()->unsigned()->change();
             $t->foreign('aircraft_pilot_and_crew_flight_logs')->references('id')->on('aircraft_pilot_and_crew_flight_logs');
         });
     }
