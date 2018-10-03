@@ -62,8 +62,8 @@ $current = 0;
 
 
         <div class="form-group">
-            {{Form::label($current, 'The pilot in command')}}
-            {{Form::text('$current', isset($data->$current), ['class' => 'form-control', 'placeholder' => 'Jack Smith'])}}
+            {{Form::label($part, $part)}}
+            {{Form::text($part, isset($data->$part), ['class' => 'form-control', 'placeholder' => 'Jack Smith'])}}
         </div>
         @php $current++; @endphp
 
