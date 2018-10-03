@@ -5,8 +5,7 @@
     {{Form::open(['url' => 'forms/save/operational_flight_plan'])}}
     @csrf
 
-    @php $parts = array('operational_flight_plan',
-'id',
+    @php $parts = array(
 'pilot_in_command',
 'observer',
 'payload_operator',
@@ -54,6 +53,8 @@
 'sensitivities',
 'permission',
 'weather');
+
+$current = 0;
     @endphp
     @while(count($parts) > $current)
         @php $part = $parts[$current] @endphp
