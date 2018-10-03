@@ -42,7 +42,7 @@
 'operation_helpdesk_consulted',
 'weather_fvr',
 'distance_industrial_ports',
-'50m_horizontal_distance',
+'horizontal_distance',
 'class_1_flight',
 'tug_received',
 'flight_reported',
