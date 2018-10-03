@@ -73,10 +73,6 @@ $current = 0;
         {{Form::label('satellite_picture', 'Satellite picture')}}
         {{Form::file('satellite_picture', null, ['class' => 'form-file'])}}
     </div>
-    <div class="form-group">
-        {{Form::label('satellite_picture', 'Satellite picture')}}
-        {{Form::file('satellite_picture', null, ['class' => 'form-file'])}}
-    </div>
 
 
 
