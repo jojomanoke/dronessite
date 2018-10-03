@@ -46,7 +46,7 @@ $current = 0;
 
         <div class="form-group">
             {{Form::label($part, ucwords(str_replace("_", " ", $part)))}}
-            {{Form::checkbox($part, $part)}}
+            {{Form::checkbox($part, true)}}
         </div>
         @php $current++; @endphp
 
