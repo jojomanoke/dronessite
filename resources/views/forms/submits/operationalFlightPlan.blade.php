@@ -62,7 +62,7 @@ $current = 0;
 
 
         <div class="form-group">
-            {{Form::label($part, $part)}}
+            {{Form::label($part, ucwords(str_replace("_", " ", $part)))}}
             {{Form::text($part, isset($data->$part), ['class' => 'form-control', 'placeholder' => 'Jack Smith'])}}
         </div>
         @php $current++; @endphp
