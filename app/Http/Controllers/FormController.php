@@ -69,6 +69,23 @@ class FormController extends Controller
         $data->flightbox = $r->input('flightbox');
         $data->alternate_landing_sites = $r->input('alternate_landing_sites');
         $data->save_distance = $r->input('save_distance');
+        $data->risk_assessment = $r->input('risk_assessment');
+        $data->local_air_traffic_control = $r->input('local_air_traffic_control');
+        $data->regional_air_traffic_control = $r->input('regional_air_traffic_control');
+        $data->military_control = $r->input('military_control');
+        $data->low_flying_coordinator = $r->input('low_flying_coordinator');
+        $data->airspace_level = $r->input('airspace_level');
+        $data->civil_military_ctr = $r->input('civil_military_ctr');
+        $data->atc_required = $r->input('atc_required');
+        $data->within_3nm_military = $r->input('within_3nm_military');
+        $data->prohibited_restricted_danger_zone = $r->input('prohibited_restricted_danger_zone');
+        $data->airmen_notice = $r->input('airmen_notice');
+        $data->notam_published = $r->input('notam_published');
+        $data->operation_helpdesk_consulted = $r->input('operation_helpdesk_consulted');
+        $data->weather_fvr = $r->input('weather_fvr');
+        $data->distance_industrial_ports = $r->input('distance_industrial_ports');
+        $data->horizontal_distance = $r->input('horizontal_distance');
+        $data->class_1_flight = $r->input('class_1_flight');
     }
 
     public function pre_site_survey()
