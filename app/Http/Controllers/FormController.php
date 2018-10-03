@@ -41,7 +41,34 @@ class FormController extends Controller
 
     public function operational_flight_plan_save(Request $r, $id = null)
     {
+        if($id != null){
+            $data = OperationalFlightPlan::all()->where('id', $id);
+        }
+        else{
+            $data = new OperationalFlightPlan();
+        }
 
+        $data->pilot_in_command = $r->input('pilot_in_command');
+        $data->observer = $r->input('observer');
+        $data->payload_operator = $r->input('payload_operator');
+        $data->helper_1 = $r->input('helper_1');
+        $data->address = $r->input('address');
+        $data->latitude_longitude = $r->input('latitude_longitude');
+        $data->elevation = $r->input('elevation');
+        $data->vehicular_access = $r->input('vehicular_access');
+        $data->purpose_of_the_flight = $r->input('purpose_of_the_flight');
+        $data->type_of_operator = $r->input('type_of_operator');
+        $data->date_work_required = $r->input('date_work_required');
+        $data->mission_duration = $r->input('mission_duration');
+        $data->cruising_altitude = $r->input('cruising_altitude');
+        $data->cruising_altitude = $r->input('cruising_altitude');
+        $data->maximum_distance = $r->input('maximum_distance');
+        $data->satellite_picture = $r->input('satellite_picture');
+        $data->bag_viewer_picture = $r->input('bag_viewer_picture');
+        $data->position_of_crew = $r->input('position_of_crew');
+        $data->flightbox = $r->input('flightbox');
+        $data->alternate_landing_sites = $r->input('alternate_landing_sites');
+        $data->save_distance = $r->input('save_distance');
     }
 
     public function pre_site_survey()

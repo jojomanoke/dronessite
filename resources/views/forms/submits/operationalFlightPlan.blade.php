@@ -33,7 +33,7 @@
         {{Form::text('elevation', isset($data->elevation), ['class' => 'form-control', 'placeholder' => '15'])}}
     </div>
     <div class="form-group">
-        {{Form::label('vehicular_access', 'Vehicular acces')}}
+        {{Form::label('vehicular_access', 'Vehicular access')}}
         {{Form::text('vehicular_access', isset($data->vehicular_access), ['class' => 'form-control', 'placeholder' => 'yes'])}}
     </div>
     <div class="form-group">
