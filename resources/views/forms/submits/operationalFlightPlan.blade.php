@@ -66,6 +66,8 @@
         </div>
         @php $current++; @endphp
 
+        @endwhile
+
 
         {{--<div class="form-group">--}}
             {{--{{Form::label('pilot_in_command', 'The pilot in command')}}--}}
