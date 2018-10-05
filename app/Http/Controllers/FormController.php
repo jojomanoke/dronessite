@@ -63,11 +63,6 @@ class FormController extends Controller
         $data->cruising_altitude = $r->input('cruising_altitude');
         $data->cruising_altitude = $r->input('cruising_altitude');
         $data->maximum_distance = $r->input('maximum_distance');
-        $data->satellite_picture = $r->input('satellite_picture');
-        $data->bag_viewer_picture = $r->input('bag_viewer_picture');
-        $data->position_of_crew = $r->input('position_of_crew');
-        $data->flightbox = $r->input('flightbox');
-        $data->alternate_landing_sites = $r->input('alternate_landing_sites');
         $data->save_distance = $r->input('save_distance');
         $data->risk_assessment = $r->input('risk_assessment');
         $data->local_air_traffic_control = $r->input('local_air_traffic_control');
@@ -86,6 +81,27 @@ class FormController extends Controller
         $data->distance_industrial_ports = $r->input('distance_industrial_ports');
         $data->horizontal_distance = $r->input('horizontal_distance');
         $data->class_1_flight = $r->input('class_1_flight');
+        $data->tug_received = $r->input('tug_received');
+        $data->flight_reported = $r->input('flight_reported');
+        $data->terrain = $r->input('terrain');
+        $data->other_aircraft = $r->input('other_aircraft');
+        $data->hazards = $r->input('hazards');
+        $data->restrictions = $r->input('restrictions');
+        $data->sensitivities =$r->input('sensitivities');
+        $data->permission = $r->input('permission');
+        $data->weather = $r->input('weather');
+
+
+        $data->satellite_picture = $r->input('satellite_picture');
+
+//        $img_data = file_get_contents($img_path);
+//        $type = pathinfo($img_path, PATHINFO_EXTENSION);
+//        $base64 = $base64_encode($img_data);
+
+        $data->bag_viewer_picture = $r->input('bag_viewer_picture');
+        $data->position_of_crew = $r->input('position_of_crew');
+        $data->flightbox = $r->input('flightbox');
+        $data->alternate_landing_sites = $r->input('alternate_landing_sites');
     }
 
     public function pre_site_survey()
