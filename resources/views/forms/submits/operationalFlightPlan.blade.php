@@ -67,7 +67,7 @@ $current = 0;
         </div>
         @php $current++; @endphp
 
-        @endwhile
+    @endwhile
 
     <div class="form-group">
         {{Form::label('satellite_picture', 'Satellite picture')}}
