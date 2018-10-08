@@ -2,7 +2,7 @@
 
 @section('content')
     <h1 class="lead">Operational Flight Plan</h1>
-    {{Form::open(['url' => 'forms/save/operational_flight_plan'])}}
+    {{Form::open(['url' => 'forms/save/operational_flight_plan', 'files' => true])}}
     @csrf
 
     @php $parts = array(
