@@ -94,9 +94,9 @@ class FormController extends Controller
 
         $data->satellite_picture = $r->input('satellite_picture');
 
-//        $img_data = file_get_contents($img_path);
-//        $type = pathinfo($img_path, PATHINFO_EXTENSION);
-//        $base64 = $base64_encode($img_data);
+        $data->satellite_picture = $r->file('satellite_picture');
+        $extension = $r->image->extension();
+        $path = $r->image->store('uploads');
 
         $data->bag_viewer_picture = $r->input('bag_viewer_picture');
         $data->position_of_crew = $r->input('position_of_crew');
