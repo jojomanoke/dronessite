@@ -52,8 +52,4 @@
 
     {{Form::close()}}
 
-
-
-    @endphp
-
 @endsection
