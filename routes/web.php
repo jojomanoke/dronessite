@@ -29,6 +29,7 @@ Route::prefix('forms')->middleware('auth')->group(function(){
         Route::get('maintenance_log/{id?}', 'FormController@maintenance_log');
         Route::get('incident_log/{id?}', 'FormController@incident_log');
         Route::get('embarkation_checklist/{id?}', 'FormController@embarkation_checklist');
+        Route::get('aircraft_pilot_and_crew_flight_logs/{id?}', 'FormController@embarkation_checklist');
     });
     Route::prefix('save')->group(function(){
         Route::post('operational_flight_plan/{id?}', 'FormController@operational_flight_plan_save');
