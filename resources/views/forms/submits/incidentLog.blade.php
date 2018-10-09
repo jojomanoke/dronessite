@@ -31,6 +31,10 @@ $current = 0;
     <div class="form-group">
         {{Form::label("date_of_incident", ucwords(str_replace("_", " ", "date_of_incident")))}}
         {{Form::date("date_of_incident", \Carbon\Carbon::now())}}
+
+     <div class="form-group">
+        {{Form::label("time_of_incident", ucwords(str_replace("_", " ", "time_of_incident")))}}
+        {{Form::time("time_of_incident", \Carbon\Carbon::now())}}
     </div>
 
     {{Form::close()}}
