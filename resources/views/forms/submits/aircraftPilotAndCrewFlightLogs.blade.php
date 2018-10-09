@@ -2,7 +2,7 @@
 
 @section('content')
     <h1 class="lead">Aircraft pilot and crew flight logs</h1>
-    {{Form::open['url' => 'forms/save/aircraft_pilot_and_crew_flight_logs']}}
+    {{Form::open(['url' => 'forms/save/aircraft_pilot_and_crew_flight_logs'])}}
     @csrf
 
     @php $parts = array(
