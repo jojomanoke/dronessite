@@ -34,7 +34,7 @@
 'local_air_traffic_control',
 'regional_air_traffic_control',
 'military_control',
-'notice_to_airmen',
+'notice_to_airmen'
  );
 
 $current = 0;
