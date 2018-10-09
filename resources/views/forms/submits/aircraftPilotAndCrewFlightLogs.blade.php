@@ -6,10 +6,6 @@
     @csrf
 
     @php $parts = array(
-'date',
-'take_off_time',
-'landing_time',
-'duration',
 'aircraft',
 'aircraft_system',
 'engine_battery_no',
@@ -40,7 +36,7 @@
 
     <div class="form-group">
         {{Form::label("landing_time", ucwords(str_replace("_", " ", "landing_time")))}}
-        {{Form::number("landing_time", isset($data->$part), ['class' => 'form-control'])}}
+        {{Form::number("landing_time", ['class' => 'form-control'])}}
     </div>
 
     @while(count($parts) > $current)
