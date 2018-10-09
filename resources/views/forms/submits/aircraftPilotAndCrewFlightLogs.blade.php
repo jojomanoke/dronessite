@@ -20,23 +20,23 @@
     @endphp
 
     <div class="form-group">
-        {{Form::label("date", ucwords(str_replace("_", " ", "datum")))}}
+        {{Form::label("date", "Datum")}}
         {{Form::date("date", \Carbon\Carbon::now())}}
     </div>
 
     <div class="form-group">
-        {{Form::label("take_off_time", ucwords(str_replace("_", " ", "take_off_time")))}}
+        {{Form::label("take_off_time", "Take off time"))}}
         {{Form::time("take_off_time", \Carbon\Carbon::now())}}
     </div>
 
     <div class="form-group">
-        {{Form::label("landing_time", ucwords(str_replace("_", " ", "landing_time")))}}
+        {{Form::label("landing_time", "Landng time")}}
         {{Form::date("landing_time", \Carbon\Carbon::now())}}
     </div>
 
     <div class="form-group">
-        {{Form::label("landing_time", ucwords(str_replace("_", " ", "landing_time")))}}
-        {{Form::number("landing_time", ['class' => 'form-control'])}}
+        {{Form::label("landing_time", "Duratie")}}
+        {{Form::number("duration", null)}}
     </div>
 
     @while(count($parts) > $current)
