@@ -75,7 +75,7 @@ $current = 0;
     </div>
 
 
-
-        {{Form::close()}}
+    {{Form::submit('Save', ['class' => 'btn btn-success'])}}
+    {{Form::close()}}
 
 @endsection

@@ -6,6 +6,8 @@ use App\Form;
 use App\OperationalFlightPlan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Intervention\Image\ImageManagerStatic as Image;
+use Auth;
 
 class FormController extends Controller
 {
@@ -91,12 +93,11 @@ class FormController extends Controller
         $data->permission = $r->input('permission');
         $data->weather = $r->input('weather');
 
-
-        $data->satellite_picture = $r->input('satellite_picture');
-
         $data->satellite_picture = $r->file('satellite_picture');
-        $extension = $r->image->extension();
-        $path = $r->image->store('uploads');
+        $filename = Auth::user()->student_number . '.' . $data->satellite_picture->getClientOriginalName();
+
+        Image::make($r->file('satellite_picture'))->save(storage_path().'/app/public/'.$filename);
+
 
         $data->bag_viewer_picture = $r->input('bag_viewer_picture');
         $data->position_of_crew = $r->input('position_of_crew');
