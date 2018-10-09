@@ -30,7 +30,7 @@ $current = 0;
 
     <div class="form-group">
         {{Form::label("date_of_incident", ucwords(str_replace("_", " ", "date_of_incident")))}}
-        {{Form::date("date_of_incident" \Carbon\Carbon::now());}}
+        {{Form::date("date_of_incident" \Carbon\Carbon::now())}}
     </div>
 
     {{Form::close()}}
