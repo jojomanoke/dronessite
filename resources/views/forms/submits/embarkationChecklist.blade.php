@@ -54,15 +54,6 @@
 $current = 0;
     @endphp
 
-    <div class="form-group">
-        {{Form::label($part, ucwords(str_replace("_", " ", $part)))}}
-        {{Form::date($part, true)}}
-    </div>
-    <div class="form-group">
-        {{Form::label($part, ucwords(str_replace("_", " ", $part)))}}
-        {{Form::checkbox($part, true)}}
-    </div>
-
     @while(count($parts) > $current)
         @php $part = $parts[$current] @endphp
 
