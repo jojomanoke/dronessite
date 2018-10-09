@@ -25,13 +25,13 @@
     </div>
 
     <div class="form-group">
-        {{Form::label("take_off_time", "Take off time"))}}
+        {{Form::label("take_off_time", "Take off time")}}
         {{Form::time("take_off_time", \Carbon\Carbon::now())}}
     </div>
 
     <div class="form-group">
         {{Form::label("landing_time", "Landng time")}}
-        {{Form::date("landing_time", \Carbon\Carbon::now())}}
+        {{Form::time("landing_time", \Carbon\Carbon::now())}}
     </div>
 
     <div class="form-group">
