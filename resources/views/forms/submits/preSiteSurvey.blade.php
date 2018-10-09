@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-    <h1 class="lead">Operational Flight Plan</h1>
-    {{Form::open(['url' => 'forms/save/pre_flight_survey'])}}
+    <h1 class="lead">Pre site survey</h1>
+    {{Form::open(['url' => 'forms/save/pre_site_survey'])}}
     @csrf
 
     @php $parts = array(
