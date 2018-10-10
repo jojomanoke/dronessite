@@ -18,7 +18,7 @@
     </div>
 
     <div class="form-group">
-        {{Form::label("date_of_charge", ucwords(str_replace("_", " ", "date_of_charge")}}
+        {{Form::label("date_of_charge", ucwords(str_replace("_", " ", "date_of_charge")))}}
         {{Form::date("date_of_charge", \Carbon\Carbon::now())}}
     </div>
 
