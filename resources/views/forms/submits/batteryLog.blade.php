@@ -13,8 +13,8 @@
     </div>
 
     <div class="form-group">
-        {{Form::label('battery_residual', ucwords(str_replace("_", " ", "battery_residual")))}}
-        {{Form::text('battery_residual', isset($data->'battery_residual'), ['class' => 'form-control'])}}
+        {{Form::label('battery_residual', ucwords(str_replace("_", " ", 'battery_residual')))}}
+        {{Form::text('battery_residual', isset($data->battery_residual), ['class' => 'form-control'])}}
     </div>
 
     <div class="form-group">
@@ -24,7 +24,7 @@
 
     <div class="form-group">
         {{Form::label("charge_input", ucwords(str_replace("_", " ", "charge_input")))}}
-        {{Form::text("charge_input", isset($data->"charge_input"), ['class' => 'form-control'])}}
+        {{Form::text("charge_input", isset($data->charge_input), ['class' => 'form-control'])}}
     </div>
 
     <div class="form-group">
@@ -34,12 +34,12 @@
 
     <div class="form-group">
         {{Form::label('pre_flight', ucwords(str_replace("_", " ", 'pre_flight')))}}
-        {{Form::text('pre_flight', isset($data->'pre_flight'), ['class' => 'form-control'])}}
+        {{Form::text('pre_flight', isset($data->pre_flight), ['class' => 'form-control'])}}
     </div>
 
     <div class="form-group">
         {{Form::label('notes', ucwords(str_replace("_", " ", 'notes')))}}
-        {{Form::text('notes', isset($data->'notes'), ['class' => 'form-control'])}}
+        {{Form::text('notes', isset($data->notes), ['class' => 'form-control'])}}
     </div>
 
 
