@@ -8,17 +8,17 @@
 
 
     <div class="form-group">
-        {{Form::label("battery_number", "Batterij procent")}}
+        {{Form::label("battery_number", ucwords(str_replace("_", " ", "battery_number")))}}
         {{Form::number("battery_number", null)}}
     </div>
 
     <div class="form-group">
-        {{Form::label('battery_residual', 'Batterij overblijfsel')))}}
+        {{Form::label('battery_residual', ucwords(str_replace("_", " ", "battery_residual")))}}
         {{Form::text('battery_residual', isset($data->'battery_residual'), ['class' => 'form-control'])}}
     </div>
 
     <div class="form-group">
-        {{Form::label("date_of_charge", "Datum opgeladen")}}
+        {{Form::label("date_of_charge", ucwords(str_replace("_", " ", "date_of_charge")}}
         {{Form::date("date_of_charge", \Carbon\Carbon::now())}}
     </div>
 
@@ -28,7 +28,7 @@
     </div>
 
     <div class="form-group">
-        {{Form::label("flight_duration", "Vlucht duratie")}}
+        {{Form::label("flight_duration", ucwords(str_replace("_", " ", "flight_duration")))}}
         {{Form::number("flight_duration", null)}}
     </div>
 
