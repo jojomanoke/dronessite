@@ -40,6 +40,9 @@ class CreatePostFlightChecklistTable extends Migration
      */
     public function down()
     {
+        Schema::table('submitted_forms', function(Blueprint $t){
+            $t->dropForeign('submitted_forms_post_flight_checklist_foreign');
+        });
         Schema::dropIfExists('post_flight_checklist');
     }
 }

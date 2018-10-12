@@ -36,6 +36,9 @@ class CreateIncidentLogTable extends Migration
      */
     public function down()
     {
+        Schema::table('submitted_forms', function(Blueprint $t){
+            $t->dropForeign('submitted_forms_incident_log_foreign');
+        });
         Schema::dropIfExists('incident_log');
     }
 }

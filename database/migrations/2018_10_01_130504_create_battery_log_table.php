@@ -37,6 +37,9 @@ class CreateBatteryLogTable extends Migration
      */
     public function down()
     {
+        Schema::table('submitted_forms', function(Blueprint $t){
+            $t->dropForeign('submitted_forms_battery_log_foreign');
+        });
         Schema::dropIfExists('battery_log');
     }
 }

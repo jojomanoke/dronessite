@@ -43,10 +43,9 @@ class FormController extends Controller
 
     public function operational_flight_plan_save(Request $r, $id = null)
     {
-        if($id != null){
+        if ($id != null) {
             $data = OperationalFlightPlan::all()->where('id', $id);
-        }
-        else{
+        } else {
             $data = new OperationalFlightPlan();
         }
 
@@ -89,16 +88,15 @@ class FormController extends Controller
         $data->other_aircraft = $r->input('other_aircraft');
         $data->hazards = $r->input('hazards');
         $data->restrictions = $r->input('restrictions');
-        $data->sensitivities =$r->input('sensitivities');
+        $data->sensitivities = $r->input('sensitivities');
         $data->permission = $r->input('permission');
         $data->weather = $r->input('weather');
 
-        $data->satellite_picture = $r->file('satellite_picture');
-        $filename = Auth::user()->student_number . '.' . $data->satellite_picture->getClientOriginalName();
-
-        Image::make($r->file('satellite_picture'))->save(storage_path().'/app/public/'.$filename);
-
-
+        if ($r->file('satellite_picture' != null)){
+            $data->satellite_picture = $r->file('satellite_picture');
+            $filename = Auth::user()->student_number . '.' . $data->satellite_picture->getClientOriginalName();
+            Image::make($r->file('satellite_picture'))->save(storage_path() . '/app/public/' . $filename);
+        }
         $data->bag_viewer_picture = $r->input('bag_viewer_picture');
         $data->position_of_crew = $r->input('position_of_crew');
         $data->flightbox = $r->input('flightbox');
@@ -106,9 +104,11 @@ class FormController extends Controller
 
         $data->save();
 
-        if(session()->get('in_progress') === null){
-            session()->put('in_progress', true);
+        if(session()->get('operational_flight_plan') === null){
+            session()->put('operational_flight_plan', $data->id);
         }
+
+        return redirect(url('forms/submit/progress'))->with('form', $data);
     }
 
     public function pre_site_survey()

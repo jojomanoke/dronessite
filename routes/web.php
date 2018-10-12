@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');  //redirect to /login
 Route::prefix('forms')->middleware('auth')->group(function(){
     Route::get('overview', 'FormController@index');
     Route::prefix('submit')->group(function(){
-        Route::get('progress', 'FormController@submitOverview');
+        Route::get('progress/{id?}', 'FormController@submitOverview');
         Route::get('operational_flight_plan/{id?}', 'FormController@operational_flight_plan_edit');
         Route::get('pre_site_survey/{id?}', 'FormController@pre_site_survey');
         Route::get('pre_flight_checklist/{id?}', 'FormController@pre_flight_checklist');

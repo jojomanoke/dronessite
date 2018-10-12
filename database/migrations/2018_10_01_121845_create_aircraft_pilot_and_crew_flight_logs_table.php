@@ -43,6 +43,9 @@ class CreateAircraftPilotAndCrewFlightLogsTable extends Migration
      */
     public function down()
     {
+        Schema::table('submitted_forms', function(Blueprint $t){
+            $t->dropForeign('submitted_forms_aircraft_pilot_and_crew_flight_logs_foreign');
+        });
         Schema::dropIfExists('aircraft_pilot_and_crew_flight_logs');
     }
 }

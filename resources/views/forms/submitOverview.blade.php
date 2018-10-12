@@ -14,11 +14,11 @@
     'battery_log'
     );
 $current = 0;
-if($form != null || $form != '[]'){
+if(isset($data) && $data != null || $data    != '[]'){
     $form = $form->toArray();
 }
 @endphp
-{{json_encode($form)}}
+{{json_encode(session()->get('operational_flight_plan'))}}
 @section('content')
     @while(count($parts) > $current)
         @php $part = $parts[$current] @endphp

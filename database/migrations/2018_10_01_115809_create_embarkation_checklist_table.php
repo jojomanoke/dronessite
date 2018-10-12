@@ -73,6 +73,9 @@ class CreateEmbarkationChecklistTable extends Migration
      */
     public function down()
     {
+        Schema::table('submitted_forms', function(Blueprint $t){
+            $t->dropForeign('submitted_forms_embarkation_checklist_foreign');
+        });
         Schema::dropIfExists('embarkation_checklist');
     }
 }

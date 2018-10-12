@@ -77,6 +77,9 @@ class CreateOperationalFlightPlanTable extends Migration
      */
     public function down()
     {
+        Schema::table('submitted_forms', function(Blueprint $t){
+            $t->dropForeign('submitted_forms_operational_flight_plan_foreign');
+        });
         Schema::dropIfExists('operational_flight_plan');
     }
 }

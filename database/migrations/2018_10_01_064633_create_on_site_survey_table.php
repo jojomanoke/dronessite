@@ -49,6 +49,9 @@ class CreateOnSiteSurveyTable extends Migration
      */
     public function down()
     {
+        Schema::table('submitted_forms', function(Blueprint $t){
+            $t->dropForeign('submitted_forms_on_site_survey_foreign');
+        });
         Schema::dropIfExists('on_site_survey');
     }
 }

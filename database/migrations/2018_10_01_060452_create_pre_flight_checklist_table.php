@@ -51,6 +51,9 @@ class CreatePreFlightChecklistTable extends Migration
      */
     public function down()
     {
+        Schema::table('submitted_forms', function(Blueprint $t){
+            $t->dropForeign('submitted_forms_pre_flight_checklist_foreign');
+        });
         Schema::dropIfExists('pre_flight_checklist');
     }
 }
