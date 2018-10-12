@@ -51,6 +51,6 @@ class CreatePreFlightChecklistTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('pre_flight_checklist');
     }
 }

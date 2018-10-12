@@ -51,7 +51,7 @@ class CreateOperationalFlightPlanTable extends Migration
             $t->string('operation_helpdesk_consulted')->nullable();
             $t->string('weather_fvr')->nullable();
             $t->string('distance_industrial_ports')->nullable();
-            $t->string('50m_horizontal_distance')->nullable();
+            $t->string('horizontal_distance')->nullable();
             $t->string('class_1_flight')->nullable();
             $t->string('tug_received')->nullable();
             $t->string('flight_reported')->nullable();
@@ -77,6 +77,6 @@ class CreateOperationalFlightPlanTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('operational_flight_plan');
     }
 }

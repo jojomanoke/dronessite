@@ -60,6 +60,6 @@ class CreatePreSiteSurveyTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('pre_site_survey');
     }
 }

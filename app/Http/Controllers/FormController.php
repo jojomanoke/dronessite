@@ -103,6 +103,12 @@ class FormController extends Controller
         $data->position_of_crew = $r->input('position_of_crew');
         $data->flightbox = $r->input('flightbox');
         $data->alternate_landing_sites = $r->input('alternate_landing_sites');
+
+        $data->save();
+
+        if(session()->get('in_progress') === null){
+            session()->put('in_progress', true);
+        }
     }
 
     public function pre_site_survey()
