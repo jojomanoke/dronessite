@@ -14,11 +14,14 @@
     'battery_log'
     );
 $current = 0;
-if(isset($data) && $data != null || $data    != '[]'){
-    $form = $form->toArray();
+if(isset($data)){
+    $form = toArray($form);
+}
+else{
+    $data = null;
 }
 @endphp
-{{json_encode(session()->get('operational_flight_plan'))}}
+{{json_encode(session()->all())}}
 @section('content')
     @while(count($parts) > $current)
         @php $part = $parts[$current] @endphp
@@ -36,10 +39,10 @@ if(isset($data) && $data != null || $data    != '[]'){
                 <div id="collapse_{{$current}}" class="collapse show" aria-labelledby="heading_{{$current}}" data-parent="#accordion_{{$current}}">
                     <div class="card-body">
                         <div class="row">
-                            @if(isset($form[$current]))
+                            @if(session()->get($part) != null)
                                 <div class="col float-left">You have submitted this part</div>
                                 <div class="col float-right">
-                                    <a class="btn btn-warning" href="{{url('forms/submit'.'/'.$parts[$current])}}">Edit</a>
+                                    <a class="btn btn-warning" href="{{url('forms/submit'.'/'.$part.'/'.session()->get($part))}}">Edit</a>
                                 </div>
                             @else
                                 <div class="col float-left">You have not submitted this yet</div>

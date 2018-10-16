@@ -51,8 +51,8 @@ $current = 0;
         @php $current++; @endphp
 
         @endwhile
-
-
+        {{json_encode($data)}}
+    {{Form::submit('Save', ['class' => 'btn btn-success'])}}
 
         {{Form::close()}}
 

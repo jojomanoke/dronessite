@@ -36,5 +36,14 @@ Route::prefix('forms')->middleware('auth')->group(function(){
     });
     Route::prefix('save')->group(function(){
         Route::post('operational_flight_plan/{id?}', 'FormController@operational_flight_plan_save');
+        Route::post('pre_site_survey/{id?}', 'FormController@pre_site_survey_save');
+        Route::post('pre_flight_checklist/{id?}', 'FormController@pre_flight_checklist_save');
+        Route::post('maintenance_log/{id?}', 'FormController@maintenance_log_save');
+        Route::post('incident_log/{id?}', 'FormController@incident_log_save');
+        Route::post('embarkation_checklist/{id?}', 'FormController@embarkation_checklist_save');
+        Route::post('aircraft_pilot_and_crew_flight_logs/{id?}', 'FormController@aircraft_pilot_and_crew_flight_logs_save');
+        Route::post('arrival_flight_checklist/{id?}', 'FormController@arrival_flight_checklist_save');
+        Route::post('post_flight_checklist/{id?}', 'FormController@post_flight_checklist_save');
+        Route::post('battery_log/{id?}', 'FormController@battery_log_save');
     });
 });

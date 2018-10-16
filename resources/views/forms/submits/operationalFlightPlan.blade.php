@@ -16,7 +16,6 @@
 'vehicular_access',
 'purpose_of_the_flight',
 'type_of_operator',
-'date_work_required',
 'mission_duration',
 'cruising_altitude',
 'maximum_altitude',
@@ -68,6 +67,11 @@ $current = 0;
         @php $current++; @endphp
 
     @endwhile
+
+    <div class="form-group">
+        {{Form::label('date_work_required', 'Date required work')}}
+        {{Form::date('date_work_required', old('', \Carbon\Carbon::parse($data->date_work_required)->format('d/m/Y')), ['class' => 'form-date'])}}
+    </div>
 
     <div class="form-group">
         {{Form::label('satellite_picture', 'Satellite picture')}}
