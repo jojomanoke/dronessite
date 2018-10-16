@@ -41,7 +41,7 @@ else{
                         <div class="row">
                             @if(session()->get($part) != null)
                                 <div class="col float-left">You have submitted this part</div>
-                                <div class="col float-right">
+                                <div class="col float-right float-right">
                                     <a class="btn btn-warning" href="{{url('forms/submit'.'/'.$part.'/'.session()->get($part))}}">Edit</a>
                                 </div>
                             @else
