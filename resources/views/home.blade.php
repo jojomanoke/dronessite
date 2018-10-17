@@ -15,6 +15,9 @@
                     @endif
 
                     You are logged in {{$user->name}}!
+                    <div class="btn btn-primary">
+                        succes
+                    </div>
                 </div>
             </div>
         </div>

@@ -39,8 +39,14 @@ class FormController extends Controller
         return view('forms.submitOverview', ['form' => $form]);
     }
 
-    public function operational_flight_plan_edit($id = null)
+    public function operational_flight_plan_edit()
     {
+        if(session()->get('operational_flight_plan') != null){
+            $id = session()->get('operational_flight_plan');
+        }
+        else{
+            $id = null;
+        }
         if($id != null){
             $data = OperationalFlightPlan::find($id);
         }
