@@ -35,7 +35,7 @@ else{
                     </h5>
                 </div>
 
-                <div id="collapse_{{$current}}" class="collapse @if($current === 0) show @else hide @endif" aria-labelledby="heading_{{$current}}" data-parent="#accordion_{{$current}}">
+                <div id="collapse_{{$current}}" class="collapse show" aria-labelledby="heading_{{$current}}" data-parent="#accordion_{{$current}}">
                     <div class="card-body">
                         <div class="row">
                             @if(session()->get($part) != null)
