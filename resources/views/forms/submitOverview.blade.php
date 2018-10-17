@@ -29,7 +29,7 @@ else{
             <div class="card">
                 <div class="card-header bg-primary" id="heading_{{$current}}">
                     <h5 class="mb-0">
-                        <button class="btn btn-secondary" data-toggle="collapse" data-target="#collapse_{{$current}}" aria-expanded="true" aria-controls="collapse_{{$current}}">
+                        <button class="btn-secondary" data-toggle="collapse" data-target="#collapse_{{$current}}" aria-expanded="true" aria-controls="collapse_{{$current}}">
                             {{ucwords(str_replace('_', ' ', $parts[$current]))}}
                         </button>
                     </h5>
