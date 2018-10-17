@@ -27,15 +27,15 @@ else{
         @csrf
         <div id="accordion_{{$current}}">
             <div class="card">
-                <div class="card-header" id="heading_{{$current}}">
+                <div class="card-header bg-primary" id="heading_{{$current}}">
                     <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_{{$current}}" aria-expanded="true" aria-controls="collapse_{{$current}}">
+                        <button class="btn btn-secondary" data-toggle="collapse" data-target="#collapse_{{$current}}" aria-expanded="true" aria-controls="collapse_{{$current}}">
                             {{ucwords(str_replace('_', ' ', $parts[$current]))}}
                         </button>
                     </h5>
                 </div>
 
-                <div id="collapse_{{$current}}" class="collapse show" aria-labelledby="heading_{{$current}}" data-parent="#accordion_{{$current}}">
+                <div id="collapse_{{$current}}" class="collapse @if($current === 0) show @else hide @endif" aria-labelledby="heading_{{$current}}" data-parent="#accordion_{{$current}}">
                     <div class="card-body">
                         <div class="row">
                             @if(session()->get($part) != null)
@@ -46,7 +46,7 @@ else{
                             @else
                                 <div class="col float-left">You have not submitted this yet</div>
                                 <div class="col float-right text-right">
-                                    <a class="btn btn-success" href="{{url('forms/submit'.'/'.$part)}}">Submit</a>
+                                    <a class="btn btn-secondary" href="{{url('forms/submit'.'/'.$part)}}">Submit</a>
                                 </div>
                             @endif
                         </div>

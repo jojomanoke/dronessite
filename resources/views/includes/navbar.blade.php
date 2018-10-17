@@ -1,5 +1,5 @@
 @php $url = url()->full();$base_url = url('/'); @endphp
-<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+<nav class="navbar navbar-expand-md navbar-light bg-primary navbar-laravel">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'ROC Friese Drones') }}
