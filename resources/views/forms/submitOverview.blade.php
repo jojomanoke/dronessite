@@ -21,7 +21,6 @@ else{
     $data = null;
 }
 @endphp
-{{json_encode(session()->all())}}
 @section('content')
     @while(count($parts) > $current)
         @php $part = $parts[$current] @endphp
