@@ -2,7 +2,12 @@
 
 @section('content')
     <h1 class="lead">On site survey</h1>
-    {{Form::open(['url' => 'forms/save/on_site_survey'])}}
+    @php if(session()->get('on_site_survey') != null){$id = session()->get('on_site_survey');} @endphp
+    @isset($id)
+        {{Form::open(['url' => 'forms/save/on_site_survey'.'/'.$id, 'files' => true])}}
+    @else
+        {{Form::open(['url' => 'forms/save/on_site_survey', 'files' => true])}}
+    @endisset
     @csrf
 
     @php $parts = array('pilot_in_command',

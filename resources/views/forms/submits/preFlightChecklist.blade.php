@@ -2,7 +2,12 @@
 @section('content')
 
     <h1 class="lead">Pre flight checklist</h1>
-    {{Form::open(['url' => 'forms/save/pre_flight_checklist'])}}
+    @php if(session()->get('pre_flight_checklist') != null){$id = session()->get('pre_flight_checklist');} @endphp
+    @isset($id)
+        {{Form::open(['url' => 'forms/save/pre_flight_checklist'.'/'.$id, 'files' => true])}}
+    @else
+        {{Form::open(['url' => 'forms/save/pre_flight_checklist', 'files' => true])}}
+    @endisset
     @csrf
 
     @php

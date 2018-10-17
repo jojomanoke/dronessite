@@ -30,12 +30,9 @@ class FormController extends Controller
     public function submitOverview(Request $request)
     {
         if(null != $request->session()->get('isSubmitting')){
-            $form = Form::get('id', $request->session()->get('isSubmitting'));
+            $form = Form::find(session()->get('isSubmitting'));
         }
-        else{
-            $form = new Form();
-        }
-
+//        return json_encode($form);
         return view('forms.submitOverview', ['form' => $form]);
     }
 
@@ -48,7 +45,7 @@ class FormController extends Controller
             $id = null;
         }
         if($id != null){
-            $data = OperationalFlightPlan::find($id);
+            $data = OperationalFlightPlan::all()->where('id',$id);
         }
         else{
             $data = new OperationalFlightPlan();
@@ -125,12 +122,28 @@ class FormController extends Controller
             session()->put('operational_flight_plan', $data->id);
         }
 
+        if(null != session()->get('isSubmitting')){
+            $form = Form::get('id', session()->get('isSubmitting'));
+        }
+        else{
+            $form = new Form();
+            $form->user_id = Auth::user()->id;
+            $form->operational_flight_plan = $data->id;
+            $form->save();
+            session()->put('isSubmitting', $form->id);
+        }
+
         return redirect(url('forms/submit/progress'));
     }
 
-    public function pre_site_survey($id = null)
+    public function pre_site_survey()
     {
-
+        if(session()->get('pre_site_survey') != null){
+            $id = session()->get('pre_site_survey');
+        }
+        else{
+            $id = null;
+        }
         if($id != null){
             $data = PreSiteSurvey::find($id);
         }
@@ -191,9 +204,20 @@ class FormController extends Controller
     }
     public function pre_flight_checklist()
     {
+        if(session()->get('pre_flight_checklist') != null){
+            $id = session()->get('pre_flight_checklist');
+        }
+        else{
+            $id = null;
+        }
+        if($id != null){
+            $data = PreFlightChecklist::find($id);
+        }
+        else{
+            $data = new PreFlightChecklist();
+        }
 
-
-        return view('forms.submits.preFlightChecklist');
+        return view('forms.submits.preFlightChecklist')->with('data', $data);
     }
 
     public function pre_flight_checklist_save(Request $r, $id = null)
@@ -239,9 +263,20 @@ class FormController extends Controller
 
     public function on_site_survey()
     {
+        if(session()->get('pre_flight_checklist') != null){
+            $id = session()->get('pre_flight_checklist');
+        }
+        else{
+            $id = null;
+        }
+        if($id != null){
+            $data = OnSiteSurvey::find($id);
+        }
+        else{
+            $data = new OnSiteSurvey();
+        }
 
-
-        return view('forms.submits.onSiteSurvey');
+        return view('forms.submits.onSiteSurvey')->with('data', $data);
     }
 
     public function on_site_survey_save(Request $r, $id = null)
@@ -284,9 +319,20 @@ class FormController extends Controller
 
     public function maintenance_log()
     {
+        if(session()->get('maintenance_log') != null){
+            $id = session()->get('maintenance_log');
+        }
+        else{
+            $id = null;
+        }
+        if($id != null){
+            $data = MaintenanceLog()::find($id);
+        }
+        else{
+            $data = new MaintenanceLog();
+        }
 
-
-        return view('forms.submits.maintenanceLog');
+        return view('forms.submits.maintenanceLog')->with('data', $data);
     }
 
     public function maintenance_log_save(Request $r, $id = null)
@@ -312,6 +358,24 @@ class FormController extends Controller
         }
 
         return redirect(url('forms/submit/progress'));
+    }
+
+    public function incident_log()
+    {
+        if(session()->get('incident_log') != null){
+            $id = session()->get('incident_log');
+        }
+        else{
+            $id = null;
+        }
+        if($id != null){
+            $data = IncidentLog::find($id);
+        }
+        else{
+            $data = new IncidentLog();
+        }
+
+        return view('forms.submits.incidentLog')->with('data', $data);
     }
 
     public function incident_log_save(Request $r, $id = null)
@@ -340,9 +404,20 @@ class FormController extends Controller
     }
     public function embarkation_checklist()
     {
+        if(session()->get('embarkation_checklist') != null){
+            $id = session()->get('embarkation_checklist');
+        }
+        else{
+            $id = null;
+        }
+        if($id != null){
+            $data = EmbarkationChecklist::find($id);
+        }
+        else{
+            $data = new EmbarkationChecklist();
+        }
 
-
-        return view('forms.submits.embarkationChecklist');
+        return view('forms.submits.embarkationChecklist')->with('data', $data);
     }
 
     public function embarkation_checklist_save(Request $r, $id = null)
@@ -409,9 +484,20 @@ class FormController extends Controller
 
     public function aircraft_pilot_and_crew_flight_logs()
     {
+        if(session()->get('aircraft_pilot_and_crew_flight_logs') != null){
+            $id = session()->get('aircraft_pilot_and_crew_flight_logs');
+        }
+        else{
+            $id = null;
+        }
+        if($id != null){
+//            $data = ::find($id);
+        }
+        else{
+//            $data = new ();
+        }
 
-
-        return view('forms.submits.aircraftPilotAndCrewFlightLogs');
+        return view('forms.submits.preFlightChecklist')->with('data', $data);
     }
     public function arrival_flight_checklist()
     {
