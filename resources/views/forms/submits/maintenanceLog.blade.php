@@ -2,11 +2,15 @@
 
 @section('content')
     <h1 class="lead">Maintenance log</h1>
-    {{Form::open(['url' => 'forms/save/maintenance_log'])}}
+    @php if(session()->get('maintenance_log') != null){$id = session()->get('maintenance_log');} @endphp
+    @isset($id)
+        {{Form::open(['url' => 'forms/save/maintenance_log'.'/'.$id, 'files' => true])}}
+    @else
+        {{Form::open(['url' => 'forms/save/maintenance_log', 'files' => true])}}
+    @endisset
     @csrf
 
     @php $parts = array(
-'date',
 'reason',
 'work_done',
 'parts_replaced',
@@ -15,6 +19,10 @@
 
 $current = 0;
     @endphp
+    <div class="form-group">
+        {{Form::label('date', 'Date')}}
+        {{Form::date('date', \Carbon\Carbon::parse($data->date)->format('Y-m-d'), ['class' => 'form-date'])}}
+    </div>
     @while(count($parts) > $current)
         @php $part = $parts[$current] @endphp
 
@@ -22,17 +30,24 @@ $current = 0;
 
         <div class="form-group">
             {{Form::label($part, ucwords(str_replace("_", " ", $part)))}}
-            {{Form::text($part, isset($data->$part), ['class' => 'form-control'])}}
+            {{Form::text($part, $data->$part, ['class' => 'form-control'])}}
         </div>
         @php $current++; @endphp
 
     @endwhile
 
-    <div class="form-group">
-        {{Form::label("system_tested", ucwords(str_replace("_", " ", "system_tested")))}}
-        {{Form::checkbox("system_tested", true)}}
-    </div>
-
+    @if($data->system_tested === 1)
+        <div class="form-group">
+            {{Form::label('system_tested', ucwords(str_replace("_", " ", 'system_tested')))}}
+            {{Form::checkbox('system_tested', true, ['checked'])}}
+        </div>
+    @else
+        <div class="form-group">
+            {{Form::label('system_tested', ucwords(str_replace("_", " ", 'system_tested')))}}
+            {{Form::checkbox('system_tested', true)}}
+        </div>
+    @endif
+    {{Form::submit('Save', ['class' => 'btn btn-success'])}}
     {{Form::close()}}
 
 @endsection

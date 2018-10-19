@@ -25,7 +25,7 @@ class Form extends Model
     }
 
     public function on_site_survey(){
-        return $this->hasOne('App\PreSiteSurvey', 'id', 'on_site_survey');
+        return $this->hasOne('App\OnSiteSurvey', 'id', 'on_site_survey');
     }
 
     public function maintenance_log(){
@@ -38,5 +38,21 @@ class Form extends Model
 
     public function embarkation_checklist(){
         return $this->hasOne('App\EmbarkationChecklist', 'id', 'embarkation_checklist');
+    }
+
+    public function aircraft_pilot_and_crew_flight_logs(){
+        return $this->hasOne('App\AircraftPilotAndCrewFlightLogs', 'id', 'aircraft_pilot_and_crew_flight_logs');
+    }
+
+    public function arrival_flight_checklist(){
+        return $this->hasOne('App\ArrivalFlightChecklist', 'id', 'arrival_flight_checklist');
+    }
+
+    public function post_flight_checklist(){
+        return $this->hasOne('App\PostFlightChecklist', 'id', 'post_flight_checklist');
+    }
+
+    public function battery_log(){
+        return $this->hasOne('App\BatteryLog', 'id', 'battery_log');
     }
 }

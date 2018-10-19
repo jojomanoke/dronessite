@@ -2,12 +2,15 @@
 
 @section('content')
     <h1 class="lead">Incident log</h1>
-    {{Form::open(['url' => 'forms/save/incident_log'])}}
+    @php if(session()->get('incident_log') != null){$id = session()->get('incident_log');} @endphp
+    @isset($id)
+        {{Form::open(['url' => 'forms/save/incident_log'.'/'.$id, 'files' => true])}}
+    @else
+        {{Form::open(['url' => 'forms/save/incident_log', 'files' => true])}}
+    @endisset
     @csrf
 
     @php $parts = array(
-'date_of_incident',
-'time_of_incident',
 'damage',
 'incident_details',
 'action_taken',
@@ -16,28 +19,28 @@
 
 $current = 0;
     @endphp
+    <div class="form-group">
+        {{Form::label("date_of_incident", ucwords(str_replace("_", " ", "date_of_incident")))}}
+        {{Form::date("date_of_incident", \Carbon\Carbon::now())}}
+    </div>
+
+    <div class="form-group">
+        {{Form::label("time_of_incident", ucwords(str_replace("_", " ", "time_of_incident")))}}
+        {{Form::time("time_of_incident", \Carbon\Carbon::parse($data->time_of_incident)->format('H:m'))}}
+    </div>
     @while(count($parts) > $current)
         @php $part = $parts[$current] @endphp
 
         <div class="form-group">
             {{Form::label($part, ucwords(str_replace("_", " ", $part)))}}
-            {{Form::text($part, isset($data->$part), ['class' => 'form-control'])}}
+            {{Form::text($part, $data->$part, ['class' => 'form-control'])}}
         </div>
 
         @php $current++; @endphp
 
     @endwhile
 
-    <div class="form-group">
-        {{Form::label("date_of_incident", ucwords(str_replace("_", " ", "date_of_incident")))}}
-        {{Form::date("date_of_incident", \Carbon\Carbon::now())}}
-    </div>
-
-     <div class="form-group">
-        {{Form::label("time_of_incident", ucwords(str_replace("_", " ", "time_of_incident")))}}
-        {{Form::time("time_of_incident", \Carbon\Carbon::now())}}
-    </div>
-
+    {{Form::submit('Save', ['class' => 'btn btn-success'])}}
     {{Form::close()}}
 
 @endsection

@@ -10,6 +10,6 @@ class PreSiteSurvey extends Model
     public $timestamps = false;
 
     public function form(){
-        return $this->belongsTo('App\Form', 'operational_flight_plan');
+        return $this->belongsTo('App\Form', 'pre_site_survey');
     }
 }

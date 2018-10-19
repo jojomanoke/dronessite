@@ -2,6 +2,8 @@
 
 @section('content')
 
-test
+@foreach($forms as $form)
+    {{$form->user_id}}
+@endforeach
 
 @endsection

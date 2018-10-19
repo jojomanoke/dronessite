@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\AircraftPilotAndCrewFlightLogs;
+use App\ArrivalFlightChecklist;
+use App\BatteryLog;
 use App\EmbarkationChecklist;
 use App\Form;
 use App\IncidentLog;
 use App\MaintenanceLog;
 use App\OnSiteSurvey;
 use App\OperationalFlightPlan;
+use App\PostFlightChecklist;
 use App\PreFlightChecklist;
 use App\PreSiteSurvey;
 use Carbon\Carbon;
@@ -24,13 +28,16 @@ class FormController extends Controller
     public function index()
     {
         $forms = Form::all();
-        return view('forms.overview');
+        return view('forms.overview')->with('forms', $forms);
     }
 
     public function submitOverview(Request $request)
     {
         if(null != $request->session()->get('isSubmitting')){
             $form = Form::find(session()->get('isSubmitting'));
+        }
+        else{
+            $form = new Form();
         }
 //        return json_encode($form);
         return view('forms.submitOverview', ['form' => $form]);
@@ -45,7 +52,7 @@ class FormController extends Controller
             $id = null;
         }
         if($id != null){
-            $data = OperationalFlightPlan::all()->where('id',$id);
+            $data = OperationalFlightPlan::find($id);
         }
         else{
             $data = new OperationalFlightPlan();
@@ -200,6 +207,17 @@ class FormController extends Controller
             session()->put('pre_site_survey', $data->id);
         }
 
+        if(null != session()->get('isSubmitting')){
+            $form = Form::get('id', session()->get('isSubmitting'));
+        }
+        else{
+            $form = new Form();
+            $form->user_id = Auth::user()->id;
+            $form->pre_site_survey = $data->id;
+            $form->save();
+            session()->put('isSubmitting', $form->id);
+        }
+
         return redirect(url('forms/submit/progress'));
     }
     public function pre_flight_checklist()
@@ -217,6 +235,7 @@ class FormController extends Controller
             $data = new PreFlightChecklist();
         }
 
+//        return json_encode($data);
         return view('forms.submits.preFlightChecklist')->with('data', $data);
     }
 
@@ -257,14 +276,25 @@ class FormController extends Controller
             session()->put('pre_flight_checklist', $data->id);
         }
 
+        if(null != session()->get('isSubmitting')){
+            $form = Form::get('id', session()->get('isSubmitting'));
+        }
+        else{
+            $form = new Form();
+            $form->user_id = Auth::user()->id;
+            $form->pre_flight_checklist = $data->id;
+            $form->save();
+            session()->put('isSubmitting', $form->id);
+        }
+
         return redirect(url('forms/submit/progress'));
 
     }
 
     public function on_site_survey()
     {
-        if(session()->get('pre_flight_checklist') != null){
-            $id = session()->get('pre_flight_checklist');
+        if(session()->get('on_site_survey') != null){
+            $id = session()->get('on_site_survey');
         }
         else{
             $id = null;
@@ -314,6 +344,17 @@ class FormController extends Controller
             session()->put('on_site_survey', $data->id);
         }
 
+        if(null != session()->get('isSubmitting')){
+            $form = Form::get('id', session()->get('isSubmitting'));
+        }
+        else{
+            $form = new Form();
+            $form->user_id = Auth::user()->id;
+            $form->on_site_survey = $data->id;
+            $form->save();
+            session()->put('isSubmitting', $form->id);
+        }
+
         return redirect(url('forms/submit/progress'));
     }
 
@@ -326,7 +367,7 @@ class FormController extends Controller
             $id = null;
         }
         if($id != null){
-            $data = MaintenanceLog()::find($id);
+            $data = MaintenanceLog::find($id);
         }
         else{
             $data = new MaintenanceLog();
@@ -344,7 +385,7 @@ class FormController extends Controller
             $data = new MaintenanceLog();
         }
 
-        $data->date = Carbon::create($r->input('date'));
+        $data->date = Carbon::parse($r->input('date'));
         $data->reason = $r->input('reason');
         $data->work_done = $r->input('work_done');
         $data->parts_replaced = $r->input('parts_replaced');
@@ -355,6 +396,17 @@ class FormController extends Controller
 
         if(session()->get('maintenance_log') === null){
             session()->put('maintenance_log', $data->id);
+        }
+
+        if(null != session()->get('isSubmitting')){
+            $form = Form::get('id', session()->get('isSubmitting'));
+        }
+        else{
+            $form = new Form();
+            $form->user_id = Auth::user()->id;
+            $form->maintenance_log = $data->id;
+            $form->save();
+            session()->put('isSubmitting', $form->id);
         }
 
         return redirect(url('forms/submit/progress'));
@@ -387,8 +439,8 @@ class FormController extends Controller
             $data = new IncidentLog();
         }
 
-        $data->date_of_incident = Carbon::create($r->input('date_of_incident'));
-        $data->time_of_incident = Carbon::create($r->input('time_of_incident'));
+        $data->date_of_incident = Carbon::parse($r->input('date_of_incident'));
+        $data->time_of_incident = Carbon::parse($r->input('time_of_incident'));
         $data->damage = $r->input('damage');
         $data->incident_details = $r->input('incident_details');
         $data->action_taken = $r->input('action_taken');
@@ -398,6 +450,17 @@ class FormController extends Controller
 
         if(session()->get('incident_log') === null){
             session()->put('incident_log', $data->id);
+        }
+
+        if(null != session()->get('isSubmitting')){
+            $form = Form::get('id', session()->get('isSubmitting'));
+        }
+        else{
+            $form = new Form();
+            $form->user_id = Auth::user()->id;
+            $form->incident_log = $data->id;
+            $form->save();
+            session()->put('isSubmitting', $form->id);
         }
 
         return redirect(url('forms/submit/progress'));
@@ -479,6 +542,17 @@ class FormController extends Controller
             session()->put('embarkation_checklist', $data->id);
         }
 
+        if(null != session()->get('isSubmitting')){
+            $form = Form::get('id', session()->get('isSubmitting'));
+        }
+        else{
+            $form = new Form();
+            $form->user_id = Auth::user()->id;
+            $form->embarkation_checklist = $data->id;
+            $form->save();
+            session()->put('isSubmitting', $form->id);
+        }
+
         return redirect(url('forms/submit/progress'));
     }
 
@@ -491,31 +565,228 @@ class FormController extends Controller
             $id = null;
         }
         if($id != null){
-//            $data = ::find($id);
+            $data = AircraftPilotAndCrewFlightLogs::find($id);
         }
         else{
-//            $data = new ();
+            $data = new AircraftPilotAndCrewFlightLogs();
         }
 
-        return view('forms.submits.preFlightChecklist')->with('data', $data);
+        return view('forms.submits.aircraftPilotAndCrewFlightLogs')->with('data', $data);
     }
+
+    public function aircraft_pilot_and_crew_flight_logs_save(Request $r, $id = null)
+    {
+        if($id != null){
+            $data = AircraftPilotAndCrewFlightLogs::find($id);
+        }
+        else{
+            $data = new AircraftPilotAndCrewFlightLogs();
+        }
+        $data->date = Carbon::parse($r->input('date'));
+        $data->take_off_time = Carbon::parse($r->input('take_off_time'));
+        $data->landing_time = Carbon::parse($r->input('landing_time'));
+        $data->duration = $r->input('duration');
+        $data->aircraft = $r->input('aircraft');
+        $data->aircraft_system = $r->input('aircraft_system');
+        $data->engine_battery_no = $r->input('engine_battery_no');
+        $data->pilot_in_command = $r->input('pilot_in_command');
+        $data->observer = $r->input('observer');
+        $data->payload_operator = $r->input('payload_operator');
+        $data->location = $r->input('location');
+        $data->purpose_of_flight = $r->input('purpose_of_flight');
+        $data->comments = $r->input('comments');
+
+        $data->save();
+
+        if(session()->get('aircraft_pilot_and_crew_flight_logs') === null){
+            session()->put('aircraft_pilot_and_crew_flight_logs', $data->id);
+        }
+
+        if(null != session()->get('isSubmitting')){
+            $form = Form::get('id', session()->get('isSubmitting'));
+        }
+        else{
+            $form = new Form();
+            $form->user_id = Auth::user()->id;
+            $form->aircraft_pilot_and_crew_flight_logs = $data->id;
+            $form->save();
+            session()->put('isSubmitting', $form->id);
+        }
+
+        return redirect(url('forms/submit/progress'));
+    }
+
     public function arrival_flight_checklist()
     {
+        if(session()->get('arrival_flight_checklist') != null){
+            $id = session()->get('arrival_flight_checklist');
+        }
+        else{
+            $id = null;
+        }
+        if($id != null){
+            $data = ArrivalFlightChecklist::find($id);
+        }
+        else{
+            $data = new ArrivalFlightChecklist();
+        }
 
-
-        return view('forms.submits.arrivalFlightChecklist');
+        return view('forms.submits.arrivalFlightChecklist')->with('data', $data);
     }
+
+    public function arrival_flight_checklist_save(Request $r, $id = null)
+    {
+        if($id != null){
+            $data = ArrivalFlightChecklist::find($id);
+        }
+        else{
+            $data = new ArrivalFlightChecklist();
+        }
+        $data->site_survey = $r->input('site_survey');
+        $data->flight_plan = $r->input('flight_plan');
+        $data->airframe = $r->input('airframe');
+        $data->camera = $r->input('camera');
+        $data->av_connections = $r->input('av_connections');
+        $data->propellors = $r->input('propellors');
+        $data->calibration_platform = $r->input('calibration_platform');
+        $data->ground_station = $r->input('ground_station');
+        $data->av_monitor = $r->input('av_monitor');
+        $data->crew_identification_badges = $r->input('crew_identification_badges');
+        $data->hard_hat_fluorescent_jackets = $r->input('hard_hat_fluorescent_jackets');
+        $data->two_way_radios = $r->input('two_way_radios');
+        $data->first_aid_kit = $r->input('first_aid_kit');
+        $data->fire_extinguisher = $r->input('fire_extinguisher');
+        $data->cordens_signs_and_safety_tape = $r->input('cordens_signs_and_safety_tape');
+
+        $data->save();
+
+        if(session()->get('arrival_flight_checklist') === null){
+            session()->put('arrival_flight_checklist', $data->id);
+        }
+
+        if(null != session()->get('isSubmitting')){
+            $form = Form::get('id', session()->get('isSubmitting'));
+        }
+        else{
+            $form = new Form();
+            $form->user_id = Auth::user()->id;
+            $form->arrival_flight_checklist = $data->id;
+            $form->save();
+            session()->put('isSubmitting', $form->id);
+        }
+
+        return redirect(url('forms/submit/progress'));
+    }
+
     public function post_flight_checklist()
     {
+        if(session()->get('post_flight_checklist') != null){
+            $id = session()->get('post_flight_checklist');
+        }
+        else{
+            $id = null;
+        }
+        if($id != null){
+            $data = PostFlightChecklist::find($id);
+        }
+        else{
+            $data = new PostFlightChecklist();
+        }
 
-
-        return view('forms.submits.postFlightChecklist');
+        return view('forms.submits.postFlightChecklist')->with('data', $data);
     }
+
+    public function post_flight_checklist_save(Request $r, $id = null)
+    {
+        if($id != null){
+            $data = PostFlightChecklist::find($id);
+        }
+        else{
+            $data = new PostFlightChecklist();
+        }
+        $data->touchdown = $r->input('touchdown');
+        $data->power_down = $r->input('power_down');
+        $data->removal = $r->input('removal');
+        $data->data_recording = $r->input('data_recording');
+        $data->transmitter = $r->input('transmitter');
+        $data->camera = $r->input('camera');
+        $data->airframe = $r->input('airframe');
+        $data->battery = $r->input('battery');
+        $data->memory_card = $r->input('memory_card');
+        $data->review = $r->input('review');
+
+        $data->save();
+
+        if(session()->get('post_flight_checklist') === null){
+            session()->put('post_flight_checklist', $data->id);
+        }
+
+        if(null != session()->get('isSubmitting')){
+            $form = Form::get('id', session()->get('isSubmitting'));
+        }
+        else{
+            $form = new Form();
+            $form->user_id = Auth::user()->id;
+            $form->post_flight_checklist = $data->id;
+            $form->save();
+            session()->put('isSubmitting', $form->id);
+        }
+
+        return redirect(url('forms/submit/progress'));
+    }
+
     public function battery_log()
     {
+        if(session()->get('battery_log') != null){
+            $id = session()->get('battery_log');
+        }
+        else{
+            $id = null;
+        }
+        if($id != null){
+            $data = BatteryLog::find($id);
+        }
+        else{
+            $data = new BatteryLog();
+        }
 
+        return view('forms.submits.batteryLog')->with('data', $data);
+    }
 
-        return view('forms.submits.batteryLog');
+    public function battery_log_save(Request $r, $id = null)
+    {
+        if($id != null){
+            $data = BatteryLog::find($id);
+        }
+        else{
+            $data = new BatteryLog();
+        }
+        $data->battery_number = $r->input('battery_number');
+        $data->battery_residual = $r->input('battery_residual');
+        $data->date_of_charge = Carbon::parse($r->input('date_of_charge'));
+        $data->charge_input = $r->input('charge_input');
+        $data->flight_duration = $r->input('flight_duration');
+        $data->pre_flight = $r->input('pre_flight');
+        $data->notes = $r->input('notes');
+
+        $data->save();
+
+        if(session()->get('battery_log') === null){
+            session()->put('battery_log', $data->id);
+        }
+
+        if(null != session()->get('isSubmitting')){
+            $form = Form::get('id', session()->get('isSubmitting'));
+        }
+        else{
+            $form = new Form();
+            $form->user_id = Auth::user()->id;
+            $form->battery_log = $data->id;
+            $form->save();
+            session()->put('isSubmitting', $form->id);
+        }
+
+        return redirect(url('forms/submit/progress'));
     }
 
 }

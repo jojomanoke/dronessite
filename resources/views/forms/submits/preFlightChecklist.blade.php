@@ -21,13 +21,25 @@
     @while(count($parts) > $current)
         @php $part = $parts[$current] @endphp
 
+        @if($data->$part === 1)
+            <div class="form-group">
+                {{Form::label($part, ucwords(str_replace("_", " ", $part)))}}
+                {{Form::checkbox($part, true, ['checked'])}}
+            </div>
+        @else
+            <div class="form-group">
+                {{Form::label($part, ucwords(str_replace("_", " ", $part)))}}
+                {{Form::checkbox($part, true)}}
+            </div>
+        @endif
 
-
-        <div class="form-group">
-            {{Form::label($part, ucwords(str_replace("_", " ", $part)))}}
-            {{Form::checkbox($part, true)}}
-        </div>
         @php $current++; @endphp
 
     @endwhile
+    {{Form::submit('Save', ['class' => 'btn btn-success'])}}
+    {{Form::close()}}
+@endsection
+
+@section('footer')
+
 @endsection

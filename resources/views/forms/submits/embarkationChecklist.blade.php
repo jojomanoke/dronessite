@@ -2,7 +2,12 @@
 
 @section('content')
     <h1 class="lead">Embarkation checklist</h1>
-    {{Form::open(['url' => 'forms/save/embarkation_checklist'])}}
+    @php if(session()->get('embarkation_checklist') != null){$id = session()->get('embarkation_checklist');} @endphp
+    @isset($id)
+        {{Form::open(['url' => 'forms/save/embarkation_checklist'.'/'.$id, 'files' => true])}}
+    @else
+        {{Form::open(['url' => 'forms/save/embarkation_checklist', 'files' => true])}}
+    @endisset
     @csrf
 
     @php $parts = array(
@@ -59,14 +64,21 @@ $current = 0;
 
 
 
-        <div class="form-group">
-            {{Form::label($part, ucwords(str_replace("_", " ", $part)))}}
-            {{Form::checkbox($part, true)}}
-        </div>
+        @if($data->$part === 1)
+            <div class="form-group">
+                {{Form::label($part, ucwords(str_replace("_", " ", $part)))}}
+                {{Form::checkbox($part, true, ['checked'])}}
+            </div>
+        @else
+            <div class="form-group">
+                {{Form::label($part, ucwords(str_replace("_", " ", $part)))}}
+                {{Form::checkbox($part, true)}}
+            </div>
+        @endif
         @php $current++; @endphp
 
     @endwhile
-
+    {{Form::submit('Save', ['class' => 'btn btn-success'])}}
     {{Form::close()}}
 
 @endsection

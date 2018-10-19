@@ -38,7 +38,7 @@
         {{Form::date('date_work_required', \Carbon\Carbon::parse($data->date_work_required)->format('Y-m-d'), ['class' => 'form-date'])}}
     </div>
     {{Form::submit('Save', ['class' => 'btn btn-success'])}}
-
+    {{Form::submit('Save', ['class' => 'btn btn-success'])}}
         {{Form::close()}}
 
 @endsection

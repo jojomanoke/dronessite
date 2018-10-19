@@ -39,13 +39,13 @@ $current = 0;
 
         <div class="form-group">
             {{Form::label($part, ucwords(str_replace("_", " ", $part)))}}
-            {{Form::text($part, isset($data->$part), ['class' => 'form-control'])}}
+            {{Form::text($part, $data->$part, ['class' => 'form-control'])}}
         </div>
         @php $current++; @endphp
 
     @endwhile
 
-
+    {{Form::submit('Save', ['class' => 'btn btn-success'])}}
     {{Form::close()}}
 
 @endsection

@@ -12,4 +12,6 @@ npm-debug.log
 yarn-error.log
 .env
 .phpunit.result.cache
-storage/database
+/storage/database
+/public/css/app.css
+/public/js/app.js
