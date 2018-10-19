@@ -57,7 +57,7 @@ class FormController extends Controller
             $id = null;
         }
         if($id != null){
-            $data = OperationalFlightPlan::find($id);
+            $data = OperationalFlightPlan::all()->where('id', $id)->first();
         }
         else{
             $data = new OperationalFlightPlan();
@@ -86,7 +86,6 @@ class FormController extends Controller
         $data->purpose_of_the_flight = $r->input('purpose_of_the_flight');
         $data->type_of_operator = $r->input('type_of_operator');
         $data->date_work_required = Carbon::parse($r->input('date_work_required'));
-
         $data->mission_duration = $r->input('mission_duration');
         $data->cruising_altitude = $r->input('cruising_altitude');
         $data->cruising_altitude = $r->input('cruising_altitude');
@@ -135,15 +134,15 @@ class FormController extends Controller
         }
 
         if(null != session()->get('isSubmitting')){
-            $form = Form::get('id', session()->get('isSubmitting'));
+            $form = Form::find(session()->get('isSubmitting'));
         }
         else{
             $form = new Form();
-            $form->user_id = Auth::user()->id;
-            $form->operational_flight_plan = $data->id;
-            $form->save();
             session()->put('isSubmitting', $form->id);
         }
+        $form->user_id = Auth::user()->id;
+        $form->operational_flight_plan = $data->id;
+        $form->save();
 
         return redirect(url('forms/submit/progress'));
     }
@@ -213,15 +212,15 @@ class FormController extends Controller
         }
 
         if(null != session()->get('isSubmitting')){
-            $form = Form::get('id', session()->get('isSubmitting'));
+            $form = Form::find(session()->get('isSubmitting'));
         }
         else{
             $form = new Form();
-            $form->user_id = Auth::user()->id;
-            $form->pre_site_survey = $data->id;
-            $form->save();
             session()->put('isSubmitting', $form->id);
         }
+        $form->user_id = Auth::user()->id;
+        $form->pre_site_survey = $data->id;
+        $form->save();
 
         return redirect(url('forms/submit/progress'));
     }
@@ -282,15 +281,15 @@ class FormController extends Controller
         }
 
         if(null != session()->get('isSubmitting')){
-            $form = Form::get('id', session()->get('isSubmitting'));
+            $form = Form::find(session()->get('isSubmitting'));
         }
         else{
             $form = new Form();
-            $form->user_id = Auth::user()->id;
-            $form->pre_flight_checklist = $data->id;
-            $form->save();
             session()->put('isSubmitting', $form->id);
         }
+        $form->user_id = Auth::user()->id;
+        $form->pre_flight_checklist = $data->id;
+        $form->save();
 
         return redirect(url('forms/submit/progress'));
 
@@ -350,15 +349,15 @@ class FormController extends Controller
         }
 
         if(null != session()->get('isSubmitting')){
-            $form = Form::get('id', session()->get('isSubmitting'));
+            $form = Form::find(session()->get('isSubmitting'));
         }
         else{
             $form = new Form();
-            $form->user_id = Auth::user()->id;
-            $form->on_site_survey = $data->id;
-            $form->save();
             session()->put('isSubmitting', $form->id);
         }
+        $form->user_id = Auth::user()->id;
+        $form->on_site_survey = $data->id;
+        $form->save();
 
         return redirect(url('forms/submit/progress'));
     }
@@ -404,15 +403,15 @@ class FormController extends Controller
         }
 
         if(null != session()->get('isSubmitting')){
-            $form = Form::get('id', session()->get('isSubmitting'));
+            $form = Form::find(session()->get('isSubmitting'));
         }
         else{
             $form = new Form();
-            $form->user_id = Auth::user()->id;
-            $form->maintenance_log = $data->id;
-            $form->save();
             session()->put('isSubmitting', $form->id);
         }
+        $form->user_id = Auth::user()->id;
+        $form->maintenance_log = $data->id;
+        $form->save();
 
         return redirect(url('forms/submit/progress'));
     }
@@ -458,15 +457,15 @@ class FormController extends Controller
         }
 
         if(null != session()->get('isSubmitting')){
-            $form = Form::get('id', session()->get('isSubmitting'));
+            $form = Form::find(session()->get('isSubmitting'));
         }
         else{
             $form = new Form();
-            $form->user_id = Auth::user()->id;
-            $form->incident_log = $data->id;
-            $form->save();
             session()->put('isSubmitting', $form->id);
         }
+        $form->user_id = Auth::user()->id;
+        $form->incident_log = $data->id;
+        $form->save();
 
         return redirect(url('forms/submit/progress'));
     }
@@ -548,15 +547,15 @@ class FormController extends Controller
         }
 
         if(null != session()->get('isSubmitting')){
-            $form = Form::get('id', session()->get('isSubmitting'));
+            $form = Form::find(session()->get('isSubmitting'));
         }
         else{
             $form = new Form();
-            $form->user_id = Auth::user()->id;
-            $form->embarkation_checklist = $data->id;
-            $form->save();
             session()->put('isSubmitting', $form->id);
         }
+        $form->user_id = Auth::user()->id;
+        $form->embarkation_checklist = $data->id;
+        $form->save();
 
         return redirect(url('forms/submit/progress'));
     }
@@ -608,15 +607,15 @@ class FormController extends Controller
         }
 
         if(null != session()->get('isSubmitting')){
-            $form = Form::get('id', session()->get('isSubmitting'));
+            $form = Form::find(session()->get('isSubmitting'));
         }
         else{
             $form = new Form();
-            $form->user_id = Auth::user()->id;
-            $form->aircraft_pilot_and_crew_flight_logs = $data->id;
-            $form->save();
             session()->put('isSubmitting', $form->id);
         }
+        $form->user_id = Auth::user()->id;
+        $form->aircraft_pilot_and_crew_flight_logs = $data->id;
+        $form->save();
 
         return redirect(url('forms/submit/progress'));
     }
@@ -670,15 +669,15 @@ class FormController extends Controller
         }
 
         if(null != session()->get('isSubmitting')){
-            $form = Form::get('id', session()->get('isSubmitting'));
+            $form = Form::find(session()->get('isSubmitting'));
         }
         else{
             $form = new Form();
-            $form->user_id = Auth::user()->id;
-            $form->arrival_flight_checklist = $data->id;
-            $form->save();
             session()->put('isSubmitting', $form->id);
         }
+        $form->user_id = Auth::user()->id;
+        $form->arrival_flight_checklist = $data->id;
+        $form->save();
 
         return redirect(url('forms/submit/progress'));
     }
@@ -727,15 +726,15 @@ class FormController extends Controller
         }
 
         if(null != session()->get('isSubmitting')){
-            $form = Form::get('id', session()->get('isSubmitting'));
+            $form = Form::find(session()->get('isSubmitting'));
         }
         else{
             $form = new Form();
-            $form->user_id = Auth::user()->id;
-            $form->post_flight_checklist = $data->id;
-            $form->save();
             session()->put('isSubmitting', $form->id);
         }
+        $form->user_id = Auth::user()->id;
+        $form->post_flight_checklist = $data->id;
+        $form->save();
 
         return redirect(url('forms/submit/progress'));
     }
@@ -781,15 +780,15 @@ class FormController extends Controller
         }
 
         if(null != session()->get('isSubmitting')){
-            $form = Form::get('id', session()->get('isSubmitting'));
+            $form = Form::find(session()->get('isSubmitting'));
         }
         else{
             $form = new Form();
-            $form->user_id = Auth::user()->id;
-            $form->battery_log = $data->id;
-            $form->save();
             session()->put('isSubmitting', $form->id);
         }
+        $form->user_id = Auth::user()->id;
+        $form->battery_log = $data->id;
+        $form->save();
 
         return redirect(url('forms/submit/progress'));
     }
