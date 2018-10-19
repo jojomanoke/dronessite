@@ -28,7 +28,7 @@ class FormController extends Controller
     public function index()
     {
         if(Auth::user()->role_id === 1){
-            $forms = Form::all()->where('id', Auth::user()->id);
+            $forms = Form::all()->where('user_id', Auth::user()->id);
         }
         else{
             $forms = Form::all();
