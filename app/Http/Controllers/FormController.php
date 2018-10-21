@@ -36,16 +36,53 @@ class FormController extends Controller
         return view('forms.overview')->with('forms', $forms);
     }
 
-    public function submitOverview(Request $request)
+    public function submitOverview(Request $request, $id = null)
     {
+        $check_array[] = null;
+        if(null != $id) {
+            $current = 0;
+            $request->session()->put('isSubmitting', $id);
+            $form = Form::find(session()->get('isSubmitting'));
+            foreach($form->getAttributes() as $attr => $value){
+                if($current > 1 && $current < 13){
+                    $check_array[$attr] = $value;
+                }
+                $current ++;
+            }
+            array_pull($check_array, 0);
+
+            foreach($check_array as $key => $value){
+                $request->session()->put($key, $value);
+            }
+        }
         if(null != $request->session()->get('isSubmitting')){
             $form = Form::find(session()->get('isSubmitting'));
         }
         else{
             $form = new Form();
         }
-//        return json_encode($form);
-        return view('forms.submitOverview', ['form' => $form]);
+        if($id != null){
+            return redirect('/forms/submit/progress');
+        }
+        else {
+            return view('forms.submitOverview', ['form' => $form]);
+        }
+    }
+
+    public function resetSubmit(Request $r){
+        $check_array[] = null;
+        $current = 0;
+        $form = Form::all()->first();
+        $r->session()->put('isSubmitting', null);
+
+        foreach($form->getAttributes() as $attr => $value){
+            if($current > 1 && $current < 13){
+                $r->session()->put($attr, null);
+            }
+            $current ++;
+        }
+        array_pull($check_array, 0);
+        return redirect('/forms/submit/progress');
     }
 
     public function operational_flight_plan_edit()
@@ -138,9 +175,10 @@ class FormController extends Controller
         }
         else{
             $form = new Form();
+            $form->user_id = Auth::user()->id;
+            $form->save();
             session()->put('isSubmitting', $form->id);
         }
-        $form->user_id = Auth::user()->id;
         $form->operational_flight_plan = $data->id;
         $form->save();
 
@@ -216,6 +254,8 @@ class FormController extends Controller
         }
         else{
             $form = new Form();
+            $form->user_id = Auth::user()->id;
+            $form->save();
             session()->put('isSubmitting', $form->id);
         }
         $form->user_id = Auth::user()->id;
@@ -285,6 +325,8 @@ class FormController extends Controller
         }
         else{
             $form = new Form();
+            $form->user_id = Auth::user()->id;
+            $form->save();
             session()->put('isSubmitting', $form->id);
         }
         $form->user_id = Auth::user()->id;
@@ -353,6 +395,8 @@ class FormController extends Controller
         }
         else{
             $form = new Form();
+            $form->user_id = Auth::user()->id;
+            $form->save();
             session()->put('isSubmitting', $form->id);
         }
         $form->user_id = Auth::user()->id;
@@ -407,6 +451,8 @@ class FormController extends Controller
         }
         else{
             $form = new Form();
+            $form->user_id = Auth::user()->id;
+            $form->save();
             session()->put('isSubmitting', $form->id);
         }
         $form->user_id = Auth::user()->id;
@@ -461,6 +507,8 @@ class FormController extends Controller
         }
         else{
             $form = new Form();
+            $form->user_id = Auth::user()->id;
+            $form->save();
             session()->put('isSubmitting', $form->id);
         }
         $form->user_id = Auth::user()->id;
@@ -551,6 +599,8 @@ class FormController extends Controller
         }
         else{
             $form = new Form();
+            $form->user_id = Auth::user()->id;
+            $form->save();
             session()->put('isSubmitting', $form->id);
         }
         $form->user_id = Auth::user()->id;
@@ -611,6 +661,8 @@ class FormController extends Controller
         }
         else{
             $form = new Form();
+            $form->user_id = Auth::user()->id;
+            $form->save();
             session()->put('isSubmitting', $form->id);
         }
         $form->user_id = Auth::user()->id;
@@ -673,6 +725,8 @@ class FormController extends Controller
         }
         else{
             $form = new Form();
+            $form->user_id = Auth::user()->id;
+            $form->save();
             session()->put('isSubmitting', $form->id);
         }
         $form->user_id = Auth::user()->id;
@@ -730,6 +784,8 @@ class FormController extends Controller
         }
         else{
             $form = new Form();
+            $form->user_id = Auth::user()->id;
+            $form->save();
             session()->put('isSubmitting', $form->id);
         }
         $form->user_id = Auth::user()->id;
@@ -784,6 +840,8 @@ class FormController extends Controller
         }
         else{
             $form = new Form();
+            $form->user_id = Auth::user()->id;
+            $form->save();
             session()->put('isSubmitting', $form->id);
         }
         $form->user_id = Auth::user()->id;

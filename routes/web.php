@@ -38,6 +38,7 @@ Route::prefix('forms')->middleware('auth')->group(function(){
         Route::get('arrival_flight_checklist/', 'FormController@arrival_flight_checklist');
         Route::get('post_flight_checklist/', 'FormController@post_flight_checklist');
         Route::get('battery_log/', 'FormController@battery_log');
+        Route::get('new/', 'FormController@resetSubmit');
     });
     Route::prefix('save')->group(function(){
 

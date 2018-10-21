@@ -14,7 +14,7 @@
         /*
         * Creates the array that holds all the text inputs for the form.
         */
-        $parts = array('pilot_in_command','uav_registration','helper_1','helper_2','latitude_longitude','altitude_from_sea_level','work_required','downloaded_map_to_groundstation','vehicular_access','airspace_type','terrain_type','proximities','hazards','restrictions','sensitivities','people','livestock','permission','access','footpaths','alternate','risk_reduction','weather','notams','local_air_traffic_control','regional_air_traffic_control','military_control','notice_to_airmen');
+        $parts = array('pilot_in_command','observer','uav_registration','helper_1','helper_2','latitude_longitude','altitude_from_sea_level','work_required','downloaded_map_to_groundstation','vehicular_access','airspace_type','terrain_type','proximities','hazards','restrictions','sensitivities','people','livestock','permission','access','footpaths','alternate','risk_reduction','weather','notams','local_air_traffic_control','regional_air_traffic_control','military_control','notice_to_airmen');
 
         /*
         * Resets the loop counter on page reload
@@ -37,7 +37,6 @@
         {{Form::label('date_work_required', 'Date work required')}}
         {{Form::date('date_work_required', \Carbon\Carbon::parse($data->date_work_required)->format('Y-m-d'), ['class' => 'form-date'])}}
     </div>
-    {{Form::submit('Save', ['class' => 'btn btn-success'])}}
     {{Form::submit('Save', ['class' => 'btn btn-success'])}}
         {{Form::close()}}
 
