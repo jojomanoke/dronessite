@@ -26,8 +26,8 @@ else{
         @php $part = $parts[$current] @endphp
         @csrf
         <div id="accordion_{{$current}}">
-            <div class="card">
-                <div class="card-header bg-primary" id="heading_{{$current}}">
+            <div class="card border-primary">
+                <div class="card-header bg-dark-primary" id="heading_{{$current}}">
                     <h5 class="mb-0">
                         <a class="text-black" style="cursor: pointer;" data-toggle="collapse" data-target="#collapse_{{$current}}" aria-expanded="true" aria-controls="collapse_{{$current}}">
                             {{ucwords(str_replace('_', ' ', $parts[$current]))}}
@@ -36,7 +36,7 @@ else{
                 </div>
 
                 <div id="collapse_{{$current}}" class="collapse show" aria-labelledby="heading_{{$current}}" data-parent="#accordion_{{$current}}">
-                    <div class="card-body">
+                    <div class="card-body bg-dark-primary">
                         <div class="row">
                             @if(session()->get($part) != null)
                                 <div class="col float-left">You have submitted this part</div>

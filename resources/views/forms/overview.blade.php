@@ -14,27 +14,28 @@
         </tr>
         </thead>
         <tbody>
+
         @foreach($forms as $key => $form)
             <tr>
                 <th scope="row">{{$loop->iteration}}</th>
                 <td>{{$form->created_at}}</td>
                 <td>{{$form->updated_at}}</td>
                 <td>
-                    <?php
-                        $allHaveValues = true;
-                        foreach ($form as $key2 => $value) {
-                        if (empty($value)) {
-                        $allHaveValues = false;
-                        break;
-                        }
-                        }
-
-                        if ($allHaveValues) {
+                    @php
+                        $complete = true;
+                                foreach($form->getAttributes() as $attribute){
+                                    if($attribute === null){
+                                        $complete = false;
+                                        break;
+                                    }
+                            }
+                        if($complete){
                             echo 'Yes';
-                        } else {
+                        }
+                        else{
                             echo 'No';
-                    }
-                    ?>
+                        }
+                    @endphp
                 </td>
                 <td>
                     <div class="btn-group rounded" role="group" aria-label="Form actions">

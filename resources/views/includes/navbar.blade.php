@@ -22,7 +22,7 @@
                         <a id="formDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{__('Forms')}} <span class="caret"></span>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="formDropdown">
+                        <div class="dropdown-menu bg-primary" aria-labelledby="formDropdown">
                             <a class="dropdown-item" href="{{ url('forms/overview') }}">
                                 {{ __('Overview') }}
                             </a>

@@ -15,24 +15,21 @@ use App\PostFlightChecklist;
 use App\PreFlightChecklist;
 use App\PreSiteSurvey;
 use Carbon\Carbon;
-use DemeterChain\Main;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 use Intervention\Image\ImageManagerStatic as Image;
 use Auth;
-use PHPUnit\Util\Blacklist;
 
 class FormController extends Controller
 {
     public function index()
     {
         if(Auth::user()->role_id === 1){
-            $forms = Form::all()->where('user_id', Auth::user()->id);
+            $forms = Form::where('user_id', Auth::user()->id)->get();
         }
         else{
             $forms = Form::all();
         }
+
         return view('forms.overview')->with('forms', $forms);
     }
 
@@ -125,7 +122,7 @@ class FormController extends Controller
         $data->date_work_required = Carbon::parse($r->input('date_work_required'));
         $data->mission_duration = $r->input('mission_duration');
         $data->cruising_altitude = $r->input('cruising_altitude');
-        $data->cruising_altitude = $r->input('cruising_altitude');
+        $data->maximum_altitude = $r->input('maximum_altitude');
         $data->maximum_distance = $r->input('maximum_distance');
         $data->save_distance = $r->input('save_distance');
         $data->risk_assessment = $r->input('risk_assessment');
@@ -154,10 +151,10 @@ class FormController extends Controller
         $data->sensitivities = $r->input('sensitivities');
         $data->permission = $r->input('permission');
         $data->weather = $r->input('weather');
-
+//        return json_encode($data);
         if ($r->file('satellite_picture' != null)){
-            $data->satellite_picture = $r->file('satellite_picture');
-            $filename = Auth::user()->student_number . '.' . $data->satellite_picture->getClientOriginalName();
+            $filename = Auth::user()->student_number . '.' . $r->file('satellite_picture')->getClientOriginalName();
+            $data->satellite_picture = $filename;
             Image::make($r->file('satellite_picture'))->save(storage_path() . '/app/public/' . $filename);
         }
         $data->bag_viewer_picture = $r->input('bag_viewer_picture');

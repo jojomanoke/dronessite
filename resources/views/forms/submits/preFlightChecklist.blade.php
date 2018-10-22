@@ -12,7 +12,7 @@
 
     @php
 
-    $parts = array('airframe','flight_battery','transmitters','camera','airframe_calibration','flight_battery_props','self_diagnostic','monitor','calibration','save_calibration','camera_platform','telemetry_link','flight_plan,','camera_recording','aircraft_alignment','crew_public_client','clearance','power_up','take_off','communication','landing');
+    $parts = array('airframe','flight_battery','transmitters','camera','airframe_calibration','flight_battery_props','self_diagnostic','monitor','calibration','save_calibration','camera_platform','telemetry_link','flight_plan','camera_recording','aircraft_alignment','crew_public_client','clearance','power_up','take_off','communication','landing');
 
     $current = 0;
 

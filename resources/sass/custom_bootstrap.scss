@@ -1,12 +1,11 @@
 $theme-colors: (
         "primary": #5faed5,
         "secondary": #c53130,
+        "dark-primary": darken($dark-primary, 10),
 );
-
-
-
-
-
+$dropdown-link-hover-bg: $dark-primary;
+$btn-focus-box-shadow: none;
+$dropdown-bg: $body-bg;
 
 
 
