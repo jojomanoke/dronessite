@@ -39,7 +39,7 @@
                 </td>
                 <td>
                     <div class="btn-group rounded" role="group" aria-label="Form actions">
-                        <a type="button" class="btn btn-warning" href="{{url('/forms/submit/progress').'/'.$form->id}}">Edit</a>
+                        <a type="button" class="btn btn-warning" href="{{url('/forms/submit/progress').'/'.$form->id}}"> @if($user->role_id == 2) Show @else Edit @endif</a>
                         <a type="button" class="btn btn-secondary" href="{{url('/forms/delete/'.$form->id)}}">Delete</a>
                     </div>
                 </td>

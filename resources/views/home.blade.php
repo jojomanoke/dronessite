@@ -1,5 +1,4 @@
 @extends('layouts.master')
-{{json_encode(session()->all())}}
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

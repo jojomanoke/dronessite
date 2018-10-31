@@ -19,7 +19,7 @@
                 <td>{{$user->student_number}}</td>
                 <td>{{$user->email}}</td>
                 <td>{{$user->user_role->name}}</td>
-                <td>{{$user->submitted_forms}}</td>
+                <td><a href="{{url('admin/'.$user->id.'/all')}}" class="btn btn-success">Show submitted forms</a></td>
             </tr>
         @endforeach
         </tbody>

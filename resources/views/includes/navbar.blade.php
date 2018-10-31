@@ -1,4 +1,4 @@
-@php $url = url()->full();$base_url = url('/'); @endphp
+@php $url = url()->full();$base_url = url('/');@endphp
 <nav class="navbar navbar-expand-md navbar-light bg-primary navbar-laravel">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">

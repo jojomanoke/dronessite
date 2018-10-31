@@ -64,4 +64,5 @@ Route::prefix('admin')->group(function(){
      */
 
     Route::get('/', 'AdminController@index');
+    Route::get('/{id}/all', 'AdminController@all_user_forms');
 });

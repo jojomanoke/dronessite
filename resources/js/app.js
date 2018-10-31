@@ -6,3 +6,5 @@
  */
 
 require('./bootstrap');
+
+import 'jquery-ui/ui/widgets/tooltip.js';
