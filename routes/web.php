@@ -57,12 +57,11 @@ Route::prefix('forms')->middleware('auth')->group(function(){
         Route::post('post_flight_checklist/{id?}', 'FormController@post_flight_checklist_save');
         Route::post('battery_log/{id?}', 'FormController@battery_log_save');
     });
+});
+Route::prefix('admin')->group(function(){
+    /*
+     * Routes for the admin accounts
+     */
 
-    Route::prefix('admin')->group(function(){
-        /*
-         * Routes for the admin accounts
-         */
-
-        Route::get('/', 'AdminController@index');
-    });
+    Route::get('/', 'AdminController@index');
 });

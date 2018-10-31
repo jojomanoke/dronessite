@@ -29,10 +29,14 @@ class User extends Authenticatable
     ];
 
     public function user_role(){
-        return $this->hasOne('App\UserRole', 'id', 'user_role');
+        return $this->hasOne('App\UserRole', 'id', 'role_id');
     }
 
     public function forms(){
         return $this->belongsTo('App\Form', 'id');
+    }
+
+    public function submitted_forms(){
+        return $this->hasMany('App\Form', 'user_id', 'id');
     }
 }
