@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 
-{{$data}}
+<pre>{{$data}}</pre>
 
 @endsection

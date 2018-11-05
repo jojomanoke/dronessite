@@ -33,7 +33,6 @@ class HomeController extends Controller
 
     public function cookies(){
         $data = Storage::disk('local')->get('cookies.txt');
-        return json_encode($data);
         return view('cookies')->with('data', $data);
     }
 }

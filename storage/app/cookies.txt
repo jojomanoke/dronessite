@@ -6,10 +6,8 @@ Last updated: November 5th, 2018
 
 Our Company uses cookies on the ROC Drones website. By using the Service, you consent to the use of cookies.
 Our Cookies Policy explains what cookies are, how we use cookies, how third-parties we may partner with may use cookies on the Service, your choices regarding cookies and further information about cookies.
-<br>
-<br>
-<strong>What are cookies?</strong>
-<br>
+
+What are cookies?
 
 Cookies are small pieces of text sent by your web browser by a website you visit. A cookie file is stored in your web browser and allows the Service or a third-party to recognize you and make your next visit easier and the Service more useful to you.
 
