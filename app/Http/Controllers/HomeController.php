@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -26,7 +27,13 @@ class HomeController extends Controller
     {
         if(Auth::user() != null){
             $user = Auth::user();
-    }
+        }
         return view('home', ['user' => $user]);
+    }
+
+    public function cookies(){
+        $data = Storage::disk('local')->get('cookies.txt');
+        return json_encode($data);
+        return view('cookies')->with('data', $data);
     }
 }
