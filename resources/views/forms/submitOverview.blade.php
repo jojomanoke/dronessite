@@ -39,14 +39,14 @@ else{
                     <div class="card-body bg-dark-primary">
                         <div class="row">
                             @if(session()->get($part) != null)
-                                <div class="col float-left">You have submitted this part</div>
+                                <div class="col float-left">This part has been edited</div>
                                 <div class="col text-right float-right">
                                     <a class="btn btn-warning" href="{{url('forms/submit'.'/'.$part)}}">Edit</a>
                                 </div>
                             @else
                                 <div class="col float-left">You have not submitted this yet</div>
                                 <div class="col float-right text-right">
-                                    <a class="btn btn-secondary" href="{{url('forms/submit'.'/'.$part)}}">Submit</a>
+                                    <a class="btn btn-secondary" href="{{url('forms/submit'.'/'.$part)}}">Create</a>
                                 </div>
                             @endif
                         </div>

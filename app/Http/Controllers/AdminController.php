@@ -19,7 +19,7 @@ class AdminController extends Controller
     {
         $forms = Form::where('user_id', $id)->get();
         $user = Auth::user();
-
+//        return json_encode($user);
         return view('forms.overview')->with(['forms' => $forms, 'user' => $user]);
     }
 }

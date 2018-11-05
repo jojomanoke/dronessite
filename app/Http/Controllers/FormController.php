@@ -30,7 +30,9 @@ class FormController extends Controller
             $forms = Form::all();
         }
 
-        return view('forms.overview')->with('forms', $forms);
+        $user = Auth::user();
+//        return json_encode($user);
+        return view('forms.overview')->with(['user' => $user, 'forms' => $forms]);
     }
 
     public function submitOverview(Request $request, $id = null)
