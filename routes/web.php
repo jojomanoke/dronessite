@@ -19,6 +19,9 @@ Route::get('/home', 'HomeController@index')->name('home');  //redirect to /login
 /*
  * All routes for the forms
  */
+
+Route::get('contact', 'FormController@contact');
+
 Route::prefix('forms')->middleware('auth')->group(function(){
     Route::get('overview', 'FormController@index');
     Route::prefix('submit')->group(function(){

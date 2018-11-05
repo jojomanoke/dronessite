@@ -852,4 +852,9 @@ class FormController extends Controller
         return redirect(url('forms/submit/progress'));
     }
 
+    public function contact(){
+        $data = null;
+        return view('contact')->with('data', $data);
+    }
+
 }
