@@ -5,6 +5,7 @@
         <thead>
         <tr>
             <th scope="col">User ID</th>
+            <th scope="col">Name</th>
             <th scope="col">Student number</th>
             <th scope="col">Email</th>
             <th scope="col">User Role</th>
@@ -16,6 +17,7 @@
         @foreach($users as $user)
             <tr>
                 <th scope="row">{{$user->id}}</th>
+                <td>{{$user->name}}</td>
                 <td>{{$user->student_number}}</td>
                 <td>{{$user->email}}</td>
                 <td>{{$user->user_role->name}}</td>
