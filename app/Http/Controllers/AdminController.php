@@ -9,7 +9,7 @@ use Auth;
 
 class AdminController extends Controller
 {
-    public function index()
+    public function users()
     {
         $users = User::all();
         return view('admin.overview')->with('users', $users);

@@ -105,7 +105,7 @@ class FormController extends Controller
         return view('forms.submits.operationalFlightPlan', ['data' => $data]);
     }
 
-    public function operational_flight_plan_save(Request $r, $id = null)
+    public function operational_flight_plan_save(Request $r, $id = null, $final = null)
     {
         if ($id != null) {
             $data = OperationalFlightPlan::find($id);
@@ -204,7 +204,7 @@ class FormController extends Controller
         return view('forms.submits.preSiteSurvey', ['data' => $data]);
     }
 
-    public function pre_site_survey_save(Request $r, $id = null)
+    public function pre_site_survey_save(Request $r, $id = null, $final = null)
     {
 
         if($id != null){
@@ -284,7 +284,7 @@ class FormController extends Controller
         return view('forms.submits.preFlightChecklist')->with('data', $data);
     }
 
-    public function pre_flight_checklist_save(Request $r, $id = null)
+    public function pre_flight_checklist_save(Request $r, $id = null, $final = null)
     {
         if($id != null){
             $data = PreFlightChecklist::find($id);
@@ -356,7 +356,7 @@ class FormController extends Controller
         return view('forms.submits.onSiteSurvey')->with('data', $data);
     }
 
-    public function on_site_survey_save(Request $r, $id = null)
+    public function on_site_survey_save(Request $r, $id = null, $final = null)
     {
         if($id != null){
             $data = OnSiteSurvey::find($id);
@@ -425,7 +425,7 @@ class FormController extends Controller
         return view('forms.submits.maintenanceLog')->with('data', $data);
     }
 
-    public function maintenance_log_save(Request $r, $id = null)
+    public function maintenance_log_save(Request $r, $id = null, $final = null)
     {
         if($id != null){
             $data = MaintenanceLog::find($id);
@@ -481,7 +481,7 @@ class FormController extends Controller
         return view('forms.submits.incidentLog')->with('data', $data);
     }
 
-    public function incident_log_save(Request $r, $id = null)
+    public function incident_log_save(Request $r, $id = null, $final = null)
     {
         if($id != null){
             $data = IncidentLog::find($id);
@@ -536,7 +536,7 @@ class FormController extends Controller
         return view('forms.submits.embarkationChecklist')->with('data', $data);
     }
 
-    public function embarkation_checklist_save(Request $r, $id = null)
+    public function embarkation_checklist_save(Request $r, $id = null, $final = null)
     {
         if($id != null){
             $data = EmbarkationChecklist::find($id);
@@ -629,7 +629,7 @@ class FormController extends Controller
         return view('forms.submits.aircraftPilotAndCrewFlightLogs')->with('data', $data);
     }
 
-    public function aircraft_pilot_and_crew_flight_logs_save(Request $r, $id = null)
+    public function aircraft_pilot_and_crew_flight_logs_save(Request $r, $id = null, $final = null)
     {
         if($id != null){
             $data = AircraftPilotAndCrewFlightLogs::find($id);
@@ -691,7 +691,7 @@ class FormController extends Controller
         return view('forms.submits.arrivalFlightChecklist')->with('data', $data);
     }
 
-    public function arrival_flight_checklist_save(Request $r, $id = null)
+    public function arrival_flight_checklist_save(Request $r, $id = null, $final = null)
     {
         if($id != null){
             $data = ArrivalFlightChecklist::find($id);
@@ -755,7 +755,7 @@ class FormController extends Controller
         return view('forms.submits.postFlightChecklist')->with('data', $data);
     }
 
-    public function post_flight_checklist_save(Request $r, $id = null)
+    public function post_flight_checklist_save(Request $r, $id = null, $final = null)
     {
         if($id != null){
             $data = PostFlightChecklist::find($id);
@@ -814,7 +814,7 @@ class FormController extends Controller
         return view('forms.submits.batteryLog')->with('data', $data);
     }
 
-    public function battery_log_save(Request $r, $id = null)
+    public function battery_log_save(Request $r, $id = null, $final = null)
     {
         if($id != null){
             $data = BatteryLog::find($id);

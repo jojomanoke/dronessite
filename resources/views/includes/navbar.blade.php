@@ -52,8 +52,8 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ url('admin') }}">
-                               Overview
+                            <a class="dropdown-item" href="{{ url('admin/users') }}">
+                               All users
                             </a>
                         </div>
                     </li>
