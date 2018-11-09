@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'smtp'),
+    'driver' => env('MAIL_DRIVER', 'sendmail'),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailtrap.io'),
+    'host' => env('MAIL_HOST', 'webmail.martkrol.nl'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 2525),
+    'port' => env('MAIL_PORT', 587),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'sylvanoverkuyl@hotmail.com'),
-        'name' => env('MAIL_FROM_NAME', 'Sylvano'),
+        'address' => env('MAIL_FROM_ADDRESS', 'passwordrecovery@martkrol.nl'),
+        'name' => env('MAIL_FROM_NAME', 'Dronessite'),
     ],
 
     /*
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('b4b6c2225bd6e1'),
+    'username' => env('passwordrecovery@martkrol.nl'),
 
-    'password' => env('06e373ff0d7fa3'),
+    'password' => env('Password@123!'),
 
     /*
     |--------------------------------------------------------------------------
@@ -111,8 +111,6 @@ return [
     | of the emails. Or, you may simply stick with the Laravel defaults!
     |
     */
-
-    'pretend' => false,
 
     'markdown' => [
         'theme' => 'default',

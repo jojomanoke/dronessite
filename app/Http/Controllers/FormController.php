@@ -75,13 +75,15 @@ class FormController extends Controller
         $current = 0;
         $form = Form::all()->first();
         $r->session()->put('isSubmitting', null);
-
-        foreach($form->getAttributes() as $attr => $value){
-            if($current > 1 && $current < 13){
-                $r->session()->put($attr, null);
+        if($form != null){
+            foreach($form->getAttributes() as $attr => $value){
+                if($current > 1 && $current < 13){
+                    $r->session()->put($attr, null);
+                }
+                $current ++;
             }
-            $current ++;
         }
+
         array_pull($check_array, 0);
         return redirect('/forms/submit/progress');
     }

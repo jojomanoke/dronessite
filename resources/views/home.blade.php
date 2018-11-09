@@ -12,7 +12,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                        {{--@php dd(env('MAIL_HOST')) @endphp--}}
                     You are logged in {{$user->name}}!
                 </div>
             </div>
