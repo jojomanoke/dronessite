@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');  //redirect to /login
 
 Route::get('contact', 'FormController@contact');
 
-Route::get('cookies', 'HomeController@cookies');
+Route::get('cookie-policy', 'HomeController@cookies');
 
 Route::prefix('forms')->middleware('auth')->group(function(){
     Route::get('overview', 'FormController@index');
