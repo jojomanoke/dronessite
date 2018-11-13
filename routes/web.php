@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::middleware('guest')->group(function(){
+    Route::get('contact', 'FormController@contact');
+    Route::get('cookie-policy', 'HomeController@cookies');
+});
 
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');      //Makes the site login-only since /home will
@@ -20,9 +24,6 @@ Route::get('/home', 'HomeController@index')->name('home');  //redirect to /login
  * All routes for the forms
  */
 
-Route::get('contact', 'FormController@contact');
-
-Route::get('cookie-policy', 'HomeController@cookies');
 
 Route::prefix('forms')->middleware('auth')->group(function(){
     Route::get('overview', 'FormController@index');
