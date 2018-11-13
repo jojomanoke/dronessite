@@ -10,19 +10,23 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::middleware('guest')->group(function(){
-    Route::get('contact', 'FormController@contact');
-    Route::get('cookie-policy', 'HomeController@cookies');
-});
+
+Route::get('contact', 'FormController@contact');
+Route::get('cookie-policy', 'HomeController@cookies');
+
 
 Auth::routes();
-Route::get('/', 'HomeController@index')->name('home');      //Makes the site login-only since /home will
-Route::get('/home', 'HomeController@index')->name('home');  //redirect to /login if the user is not authenticated. If he is logged in redirects to the dashboard.
 
 
 /*
  * All routes for the forms
  */
+Route::middleware('auth')->group(function(){
+    Route::get('/', 'HomeController@index')->name('home');      //Makes the site login-only since /home will
+    Route::get('/home', 'HomeController@index')->name('home');  //redirect to /login if the user is not authenticated. If he is logged in redirects to the dashboard.
+});
+Route::get('/', 'HomeController@index')->name('home');      //Makes the site login-only since /home will
+Route::get('/home', 'HomeController@index')->name('home');  //redirect to /login if the user is not authenticated. If he is logged in redirects to the dashboard.
 
 
 Route::prefix('forms')->middleware('auth')->group(function(){

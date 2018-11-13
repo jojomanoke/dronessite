@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('guest');
     }
 
     /**
@@ -27,8 +27,12 @@ class HomeController extends Controller
     {
         if(Auth::user() != null){
             $user = Auth::user();
+            return view('home', ['user' => $user]);
         }
-        return view('home', ['user' => $user]);
+        else{
+            return redirect('/login');
+        }
+
     }
 
     public function cookies(){
