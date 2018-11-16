@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth')->except('cookie-policy');
     }
 
     /**
@@ -29,10 +29,6 @@ class HomeController extends Controller
             $user = Auth::user();
             return view('home', ['user' => $user]);
         }
-        else{
-            return redirect('/login');
-        }
-
     }
 
     public function cookies(){
