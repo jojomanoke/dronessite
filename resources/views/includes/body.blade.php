@@ -1,3 +1,3 @@
-<main class="py-4 container @if(url()->current() === 'martkrol.nl/login') login @endif">
+<main class="py-4 container @if(url()->current() === 'login') login @endif">
     @yield('content')
 </main>
