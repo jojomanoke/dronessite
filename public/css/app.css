@@ -1607,7 +1607,7 @@ body {
   line-height: 1.6;
   color: #212529;
   text-align: left;
-  background-color: #5faed5;
+  background-color: #fff;
 }
 
 [tabindex="-1"]:focus {
@@ -2050,7 +2050,7 @@ mark,
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #5faed5;
+  background-color: #fff;
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   max-width: 100%;
@@ -3472,7 +3472,7 @@ pre code {
 }
 
 .table .table {
-  background-color: #5faed5;
+  background-color: #fff;
 }
 
 .table-sm th,
@@ -3660,7 +3660,7 @@ pre code {
 }
 
 .table .thead-dark th {
-  color: #5faed5;
+  color: #fff;
   background-color: #212529;
   border-color: #32383e;
 }
@@ -3672,7 +3672,7 @@ pre code {
 }
 
 .table-dark {
-  color: #5faed5;
+  color: #fff;
   background-color: #212529;
 }
 
@@ -4059,8 +4059,8 @@ textarea.form-control {
 
 .was-validated .custom-control-input:valid:focus ~ .custom-control-label::before,
 .custom-control-input.is-valid:focus ~ .custom-control-label::before {
-  -webkit-box-shadow: 0 0 0 1px #5faed5, 0 0 0 0.2rem rgba(56, 193, 114, 0.25);
-          box-shadow: 0 0 0 1px #5faed5, 0 0 0 0.2rem rgba(56, 193, 114, 0.25);
+  -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(56, 193, 114, 0.25);
+          box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(56, 193, 114, 0.25);
 }
 
 .was-validated .custom-file-input:valid ~ .custom-file-label,
@@ -4183,8 +4183,8 @@ textarea.form-control {
 
 .was-validated .custom-control-input:invalid:focus ~ .custom-control-label::before,
 .custom-control-input.is-invalid:focus ~ .custom-control-label::before {
-  -webkit-box-shadow: 0 0 0 1px #5faed5, 0 0 0 0.2rem rgba(227, 52, 47, 0.25);
-          box-shadow: 0 0 0 1px #5faed5, 0 0 0 0.2rem rgba(227, 52, 47, 0.25);
+  -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(227, 52, 47, 0.25);
+          box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(227, 52, 47, 0.25);
 }
 
 .was-validated .custom-file-input:invalid ~ .custom-file-label,
@@ -5213,7 +5213,7 @@ input[type="button"].btn-block {
   color: #212529;
   text-align: left;
   list-style: none;
-  background-color: #5faed5;
+  background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
@@ -5742,8 +5742,8 @@ input[type="button"].btn-block {
 }
 
 .custom-control-input:focus ~ .custom-control-label::before {
-  -webkit-box-shadow: 0 0 0 1px #5faed5, 0 0 0 0.2rem rgba(95, 174, 213, 0.25);
-          box-shadow: 0 0 0 1px #5faed5, 0 0 0 0.2rem rgba(95, 174, 213, 0.25);
+  -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(95, 174, 213, 0.25);
+          box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(95, 174, 213, 0.25);
 }
 
 .custom-control-input:active ~ .custom-control-label::before {
@@ -5977,16 +5977,16 @@ input[type="button"].btn-block {
 }
 
 .custom-range:focus::-webkit-slider-thumb {
-  -webkit-box-shadow: 0 0 0 1px #5faed5, 0 0 0 0.2rem rgba(95, 174, 213, 0.25);
-          box-shadow: 0 0 0 1px #5faed5, 0 0 0 0.2rem rgba(95, 174, 213, 0.25);
+  -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(95, 174, 213, 0.25);
+          box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(95, 174, 213, 0.25);
 }
 
 .custom-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #5faed5, 0 0 0 0.2rem rgba(95, 174, 213, 0.25);
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(95, 174, 213, 0.25);
 }
 
 .custom-range:focus::-ms-thumb {
-  box-shadow: 0 0 0 1px #5faed5, 0 0 0 0.2rem rgba(95, 174, 213, 0.25);
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(95, 174, 213, 0.25);
 }
 
 .custom-range::-moz-focus-outer {
@@ -6183,8 +6183,8 @@ input[type="button"].btn-block {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #5faed5;
-  border-color: #dee2e6 #dee2e6 #5faed5;
+  background-color: #fff;
+  border-color: #dee2e6 #dee2e6 #fff;
 }
 
 .nav-tabs .dropdown-menu {
@@ -12158,18 +12158,21 @@ a.text-dark-primary:focus {
   }
 }
 
-footer {
-  background-color: #5faed5;
+.contact {
+  background-color: #fff;
   position: relative;
   right: 0;
-  bottom: 0;
-  top: 77.5vh;
+  top: 12vh;
   left: 0;
   padding: 1rem;
   text-align: center;
   margin-top: -3em;
   -webkit-box-shadow: 2px 2px 2px 4px rgba(0, 0, 0, 0.04);
           box-shadow: 2px 2px 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+body {
+  background-image: "https://secure.aadcdn.microsoftonline-p.com/c1c6b6c8-5f-p-snimwpifce4ivc0vd7rifexl3kw3c3yf0biql0/logintenantbranding/0/illustration?ts=636395258716716897";
 }
 
 .navbar-laravel {
