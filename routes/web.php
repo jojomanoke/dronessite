@@ -12,6 +12,7 @@
 */
 
 Route::get('contact', 'FormController@contact');
+Route::post('contactSubmit', 'FormController@contactSubmit');
 Route::get('cookie-policy', 'HomeController@cookies');
 
 

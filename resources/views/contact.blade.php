@@ -10,7 +10,8 @@
         <div class="contact-section">
             <div class="container">
 
-                <form>
+                <form action="{{url ('contactSubmit')}}" method="POST">
+                    @csrf
                     <div class="row">
                         <div class="col form-line">
                             <div class="form-group">
@@ -25,7 +26,7 @@
                                 <textarea  class="form-control" id="description" placeholder="Enter Your Message"></textarea>
                             </div>
                             <div>
-                                <button type="button" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
+                                <button type="submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
                             </div>
 
                         </div>

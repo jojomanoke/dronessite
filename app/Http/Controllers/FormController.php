@@ -9,6 +9,7 @@ use App\EmbarkationChecklist;
 use App\Form;
 use App\IncidentLog;
 use App\MaintenanceLog;
+use App\Message;
 use App\OnSiteSurvey;
 use App\OperationalFlightPlan;
 use App\PostFlightChecklist;
@@ -856,7 +857,24 @@ class FormController extends Controller
 
     public function contact(){
         $data = null;
+
+
+
         return view('contact')->with('data', $data);
     }
+
+    public function contactSubmit(){
+        
+
+
+    return redirect(url('home'));
+    }
+
+
+
+
+
+
+
 
 }
