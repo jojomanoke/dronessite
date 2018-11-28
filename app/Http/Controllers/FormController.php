@@ -24,7 +24,7 @@ class FormController extends Controller
 {
     public function index()
     {
-        if(Auth::user()->role_id === 1){
+        if(Auth::user()->role_id === 2){
             $forms = Form::where('user_id', Auth::user()->id)->get();
         }
         else{
@@ -861,6 +861,15 @@ class FormController extends Controller
 
 
         return view('contact')->with('data', $data);
+    }
+
+    public function delete($id, Request $r){
+
+        $form = Form::all()->where('id', $id)->first();
+        $form->delete();
+        return json_encode($form);
+
+//        return redirect()->back();
     }
 
     public function contactSubmit(){

@@ -31,7 +31,7 @@ class CreateAircraftPilotAndCrewFlightLogsTable extends Migration
         });
 
         Schema::table('submitted_forms', function(Blueprint $t){
-            $t->integer('aircraft_pilot_and_crew_flight_logs')->nullable()->unsigned()->change();
+            $t->integer('aircraft_pilot_and_crew_flight_logs')->unsigned()->nullable()->change();
             $t->foreign('aircraft_pilot_and_crew_flight_logs')->references('id')->on('aircraft_pilot_and_crew_flight_logs');
         });
     }

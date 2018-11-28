@@ -54,6 +54,8 @@
     @php $current++; @endphp
 
     @endwhile
+
+    {{Form::label(__('lock_submit'))}}
     {{Form::submit('Save', ['class' => 'btn btn-success'])}}
     {{Form::close()}}
 
