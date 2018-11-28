@@ -12171,8 +12171,8 @@ a.text-dark-primary:focus {
           box-shadow: 2px 2px 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-body {
-  background-image: "https://secure.aadcdn.microsoftonline-p.com/c1c6b6c8-5f-p-snimwpifce4ivc0vd7rifexl3kw3c3yf0biql0/logintenantbranding/0/illustration?ts=636395258716716897";
+.background-image {
+  background: url(/images/login_background.jpg?eb92bf455d23ce22c49cdabaae726a57);
 }
 
 .navbar-laravel {
