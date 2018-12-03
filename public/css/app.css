@@ -12171,8 +12171,24 @@ a.text-dark-primary:focus {
           box-shadow: 2px 2px 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-.background-image {
-  background: url(/images/login_background.jpg?eb92bf455d23ce22c49cdabaae726a57);
+.login-body {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url(/images/login_background.jpg?eb92bf455d23ce22c49cdabaae726a57);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/images/login_background.jpg?eb92bf455d23ce22c49cdabaae726a57);
+  background-size: cover, cover;
+}
+
+.vertical-align {
+  top: 99%;
+}
+
+.login-body {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url(/images/login_background.jpg?eb92bf455d23ce22c49cdabaae726a57);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/images/login_background.jpg?eb92bf455d23ce22c49cdabaae726a57);
+  background-size: cover, cover;
+}
+
+.vertical-align {
+  top: 99%;
 }
 
 .navbar-laravel {
