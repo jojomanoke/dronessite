@@ -4,7 +4,7 @@
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'ROC Friese Drones') }}
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('navigation.toggle') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -15,11 +15,11 @@
 
                 @else
                     <li class="nav-item">
-                        <a class="nav-link" id="home" href="{{route('home')}}">{{__('Home')}}</a>
+                        <a class="nav-link" id="home" href="{{route('home')}}">{{__('home.home')}}</a>
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a id="formDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="formDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{__('Forms')}} <span class="caret"></span>
                         </a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="formDropdown">
@@ -39,15 +39,15 @@
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('auth.login') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('register.register') }}</a>
                     </li>
                 @else
-                    @if(Auth::user()->role_id == 2)
+                    @if(Auth::user()->role_id == 1)
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Admin <span class="caret"></span>
                         </a>
 
@@ -59,13 +59,13 @@
                     </li>
                     @endif
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ url('contact') }}">
-                            contact
+                            Contact
                             </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();

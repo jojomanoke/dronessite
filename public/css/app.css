@@ -12171,13 +12171,13 @@ a.text-dark-primary:focus {
           box-shadow: 2px 2px 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-body {
-  background-image: "https://secure.aadcdn.microsoftonline-p.com/c1c6b6c8-5f-p-snimwpifce4ivc0vd7rifexl3kw3c3yf0biql0/logintenantbranding/0/illustration?ts=636395258716716897";
+.login-body {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url(/images/login_background.jpg?eb92bf455d23ce22c49cdabaae726a57);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/images/login_background.jpg?eb92bf455d23ce22c49cdabaae726a57);
+  background-size: cover, cover;
 }
 
-.navbar-laravel {
-  background-color: #fff;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+.vertical-align {
+  top: 20vh !important;
 }
 

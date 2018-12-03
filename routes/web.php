@@ -11,6 +11,9 @@
 |
 */
 
+
+use App\Http\Controllers\FormController;
+
 Route::get('contact', 'FormController@contact');
 Route::post('contactSubmit', 'FormController@contactSubmit');
 Route::get('cookie-policy', 'HomeController@cookies');
@@ -65,6 +68,13 @@ Route::prefix('forms')->middleware('auth')->group(function(){
         Route::post('post_flight_checklist/{id?}/{final?}', 'FormController@post_flight_checklist_save');
         Route::post('battery_log/{id?}/{final?}', 'FormController@battery_log_save');
     });
+
+
+    /*
+     * Route for deleting a request
+     */
+
+    Route::get('delete/{id?}', 'FormController@delete');
 });
 Route::prefix('admin')->group(function(){
     /*

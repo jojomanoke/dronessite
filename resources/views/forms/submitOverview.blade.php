@@ -56,7 +56,7 @@ else{
         @php $current++; @endphp
     @endwhile
 
-    @if($user->role_id == 2)
+    @if($user->role_id == 1)
                 <a href="{{url('/admin/approve'. $form->id)}}" class="btn btn-success mt-3 float-right">Approve</a>
     @endif
 @endsection
