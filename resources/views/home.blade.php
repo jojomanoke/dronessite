@@ -11,7 +11,7 @@
                 <img class="d-block w-100" src='{!!asset("images/carousel/carousel-2.jpg")!!}' alt="Second slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src='{!!asset("images/carousel/carousel-3.jpg")!!}' alt="Third slide">
+                <img class="d-block w-100" src='{!!asset("x§images/carousel/carousel-3.jpg")!!}' alt="Third slide">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
