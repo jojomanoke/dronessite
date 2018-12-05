@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 <div class="container">
-    {{json_encode(asset("storage/app/images/carousel-1.jpg"))}}
+    {{json_encode(asset("storage\app\images\carousel-1.jpg"))}}
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
