@@ -24,7 +24,7 @@ class FormController extends Controller
 {
     public function index()
     {
-        if(Auth::user()->role_id === 2){
+        if(Auth::user()->role_id === 1){
             $forms = Form::where('user_id', Auth::user()->id)->get();
         }
         else{

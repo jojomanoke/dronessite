@@ -38,13 +38,36 @@
                     @endphp
                 </td>
                 <td>
-                    <div class="btn-group rounded" role="group" aria-label="Form actions">
-                        <a type="button" class="btn btn-warning" href="{{url('/forms/submit/progress').'/'.$form->id}}"> @if($user->user_role->id == 2) Show @else Edit @endif</a>
-                        <a type="button" class="btn btn-secondary" href="{{url('/forms/delete/'.$form->id)}}">Delete</a>
-                    </div>
-                </td>
 
+                    <div class="btn-group rounded" role="group" aria-label="Basic example">
+                        <button type="button" onclick="window.location.href= `{{url('/forms/submit/progress').'/'.$form->id}}`" class="btn btn-warning">@if($user->role_id == 1) Show @else Edit @endif</button>
+                        <button type="button" data-toggle="modal" data-target="#confirm-{{$form->id}}" class="btn btn-secondary">Delete</button>
+                    </div>
+
+                </td>
+            {{--onclick="window.location.href= `{{url('/forms/delete/'.$form->id)}}`"--}}
             </tr>
+
+            <div class="modal fade" id="confirm-{{$form->id}}" tabindex="-1" role="dialog" aria-labelledby="confirm-label-{{$form->id}}" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirm-label-{{$form->id}}">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" onclick="window.location.href= `{{url('/forms/delete/'.$form->id)}}`">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         @endforeach
         </tbody>
     </table>
