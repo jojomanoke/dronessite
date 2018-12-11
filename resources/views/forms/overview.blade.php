@@ -2,7 +2,9 @@
 
 @section('content')
     @php $records = count($forms); @endphp
-    <a class="btn btn-success float-right mb-4" href="{{url('forms/submit/new')}}">New</a>
+    @if(Request::path() == 'forms/overview')
+        <a class="btn btn-success float-right mb-4" href="{{url('forms/submit/new')}}">New</a>
+    @endif
     <table class="table">
         <thead>
         <tr>
@@ -40,7 +42,7 @@
                 <td>
 
                     <div class="btn-group rounded" role="group" aria-label="Basic example">
-                        <button type="button" onclick="window.location.href= `{{url('/forms/submit/progress').'/'.$form->id}}`" class="btn btn-warning">@if($user->role_id == 1) Show @else Edit @endif</button>
+                        <button type="button" onclick="window.location.href= `{{url('/forms/submit/progress').'/'.$form->id}}`" class="btn btn-warning">@if($user->role_id == 1 && Request::path() != 'forms/overview') Show @else Edit @endif</button>
                         <button type="button" data-toggle="modal" data-target="#confirm-{{$form->id}}" class="btn btn-secondary">Delete</button>
                     </div>
 
@@ -61,8 +63,8 @@
                             ...
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" onclick="window.location.href= `{{url('/forms/delete/'.$form->id)}}`">Confirm</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-secondary" onclick="window.location.href= `{{url('/forms/delete/'.$form->id)}}`">Confirm</button>
                         </div>
                     </div>
                 </div>

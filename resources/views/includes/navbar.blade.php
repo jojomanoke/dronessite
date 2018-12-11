@@ -1,4 +1,5 @@
 @php $url = url()->full();$base_url = url('/');@endphp
+@if(!is_mobile())
 <nav class="navbar navbar-expand-md navbar-light bg-primary navbar-laravel">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
@@ -101,3 +102,4 @@
         $('#home').addClass('active'); //This adds the active class to the 'home' href if the user is on the / directory
     }
 </script>
+    @endif
