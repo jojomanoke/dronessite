@@ -14,6 +14,9 @@
 
 use App\Http\Controllers\FormController;
 
+
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('contact', 'FormController@contact');
 Route::post('contactSubmit', 'FormController@contactSubmit');
 Route::get('cookie-policy', 'HomeController@cookies');
@@ -25,10 +28,6 @@ Auth::routes();
 /*
  * All routes for the forms
  */
-Route::middleware('auth')->group(function(){
-    Route::get('/', 'HomeController@index')->name('home');      //Makes the site login-only since /home will
-    Route::get('/home', 'HomeController@index')->name('home');  //redirect to /login if the user is not authenticated. If he is logged in redirects to the dashboard.
-});
 
 Route::prefix('forms')->middleware('auth')->group(function(){
     Route::get('overview', 'FormController@index');
