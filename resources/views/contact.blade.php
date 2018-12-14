@@ -26,7 +26,7 @@
                                 <textarea  class="form-control" id="description" placeholder="Enter Your Message"></textarea>
                             </div>
                             <div>
-                                <button type="submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
+                                <button type="submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>{{__('contact.send')}}</button>
                             </div>
 
                         </div>

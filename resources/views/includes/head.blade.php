@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="{{{ asset('../../../public/images/favicon.jpg') }}}">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.jpg') }}">
     <title>Roc-drone</title>
 
     <!-- CSRF Token -->

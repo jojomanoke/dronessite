@@ -10,7 +10,7 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Time added</th>
-            <th scope="col">Last updated</th>
+            @if(!is_mobile())<th scope="col">Last updated</th>@endif
             <th scope="col">Completed</th>
             <th scope="col">Actions</th>
         </tr>
@@ -21,7 +21,7 @@
             <tr>
                 <th scope="row">{{$loop->iteration}}</th>
                 <td>{{$form->created_at}}</td>
-                <td>{{$form->updated_at}}</td>
+                @if(!is_mobile())<td>{{$form->updated_at}}</td>@endif
                 <td>
                     @php
                         $complete = true;
@@ -40,14 +40,18 @@
                     @endphp
                 </td>
                 <td>
+                    @if(!is_mobile())
+                        <div class="btn-group rounded" role="group" aria-label="Basic example">
+                            <button type="button" onclick="window.location.href= `{{url('/forms/submit/progress').'/'.$form->id}}`" class="btn btn-warning">@if($user->role_id == 1 && Request::path() != 'forms/overview') Show @else Edit @endif</button>
+                            <button type="button" data-toggle="modal" data-target="#confirm-{{$form->id}}" class="btn btn-secondary">Delete</button>
+                        </div>
 
-                    <div class="btn-group rounded" role="group" aria-label="Basic example">
-                        <button type="button" onclick="window.location.href= `{{url('/forms/submit/progress').'/'.$form->id}}`" class="btn btn-warning">@if($user->role_id == 1 && Request::path() != 'forms/overview') Show @else Edit @endif</button>
-                        <button type="button" data-toggle="modal" data-target="#confirm-{{$form->id}}" class="btn btn-secondary">Delete</button>
-                    </div>
-
+                    @else
+                        <button type="button" onclick="window.location.href= `{{url('/forms/submit/progress').'/'.$form->id}}`" class="btn btn-warning w-100">@if($user->role_id == 1 && Request::path() != 'forms/overview') Show @else Edit @endif</button>
+                        <button type="button" data-toggle="modal" data-target="#confirm-{{$form->id}}" class="btn btn-secondary w-100">Delete</button>
+                    @endif
                 </td>
-            {{--onclick="window.location.href= `{{url('/forms/delete/'.$form->id)}}`"--}}
+                {{--onclick="window.location.href= `{{url('/forms/delete/'.$form->id)}}`"--}}
             </tr>
 
             <div class="modal fade" id="confirm-{{$form->id}}" tabindex="-1" role="dialog" aria-labelledby="confirm-label-{{$form->id}}" aria-hidden="true">

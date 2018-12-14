@@ -5,14 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('register.register') }}</div>
+                <div class="card-header">{{ __('user.register') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('user.name') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" placeholder="John Doe" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('user.email') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" placeholder="123456@edu.rocfriesepoort.nl" title="Must be your school mail" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="student_number" class="col-md-4 col-form-label text-md-right">{{ __('Student Number') }}</label>
+                            <label for="student_number" class="col-md-4 col-form-label text-md-right">{{ __('user.studentnumber') }}</label>
 
                             <div class="col-md-6">
                                 <input id="student_number" type="number" placeholder="123456" class="form-control{{ $errors->has('student_number') ? ' is-invalid' : '' }}" name="student_number" value="{{ old('student_number') }}" required>
@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('user.password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" placeholder="******" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
@@ -68,7 +68,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('user.confirm') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" placeholder="******" class="form-control" name="password_confirmation" required>

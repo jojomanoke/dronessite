@@ -16,5 +16,6 @@ return [
     'failed' => 'Deze gegevens kloppen niet.',
     'throttle' => 'Te veel pogingen gedaan. Probeer het opnieuw in :seconds seconds.',
     'login' => 'Login',
+    'remember_me' => 'Herinner mij',
 
 ];
