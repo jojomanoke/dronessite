@@ -21,14 +21,14 @@
 
                     <li class="nav-item dropdown">
                         <a id="formDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{__('Forms')}} <span class="caret"></span>
+                            {{__('forms.forms')}} <span class="caret"></span>
                         </a>
                         <div class="dropdown-menu bg-primary" aria-labelledby="formDropdown">
                             <a class="dropdown-item" href="{{ url('forms/overview') }}">
-                                {{ __('Overview') }}
+                                {{ __('forms.overview') }}
                             </a>
                             <a class="dropdown-item" href="{{ url('forms/submit/progress') }}">
-                                {{ __('Submit') }}
+                                {{ __('forms.submit') }}
                             </a>
                         </div>
                     </li>
@@ -54,7 +54,7 @@
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ url('admin/users') }}">
-                               All users
+                               {{__('admin.all_users')}}
                             </a>
                         </div>
                     </li>
@@ -71,7 +71,7 @@
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                {{ __('auth.logout') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

@@ -21,9 +21,12 @@ else{
     $data = null;
 }
 @endphp
+
+
+
 @section('content')
     @while(count($parts) > $current)
-        @php $part = $parts[$current] @endphp
+        @php $part = $parts[$current]; $f = $form->$part @endphp
         @csrf
         <div id="accordion_{{$current}}">
             <div class="card border-primary">
@@ -34,20 +37,22 @@ else{
                         </a>
                     </h5>
                 </div>
-
+                {{--{{json_encode($f['submitted'])}}--}}
                 <div id="collapse_{{$current}}" class="collapse show" aria-labelledby="heading_{{$current}}" data-parent="#accordion_{{$current}}">
                     <div class="card-body bg-dark-primary">
                         <div class="row">
-                            @if(session()->get($part) != null)
-                                <div class="col float-left">This part has been edited</div>
+                            @if($f['submitted'] == 1)
+                                <div class="col float-left">{{__('forms.submitted')}}</div>
+                            @elseif(session()->get($part) != null)
+                                <div class="col float-left">{{__('forms.edited')}}</div>
                                 <div class="col text-right float-right">
-                                    <a class="btn btn-warning" href="{{url('forms/submit'.'/'.$part)}}">Edit</a>
+                                    <a class="btn btn-warning" href="{{url('forms/submit'.'/'.$part)}}">{{__('strings.edit')}}</a>
                                 </div>
                             @else
-                                <div class="col float-left">You have not submitted this yet</div>
-                                <div class="col float-right text-right">
-                                    <a class="btn btn-secondary" href="{{url('forms/submit'.'/'.$part)}}">Create</a>
-                                </div>
+                                    <div class="col float-left">{{__('forms.not_submitted')}}</div>
+                                    <div class="col float-right text-right">
+                                        <a class="btn btn-secondary" href="{{url('forms/submit'.'/'.$part)}}">{{__('strings.create')}}</a>
+                                    </div>
                             @endif
                         </div>
                     </div>
@@ -57,6 +62,6 @@ else{
     @endwhile
 
     @if($user->role_id == 1 && $form->user_id != $user->id)
-                <a href="{{url('/admin/approve'. $form->id)}}" class="btn btn-success mt-3 float-right">Approve</a>
+                <a href="{{url('/admin/approve'. $form->id)}}" class="btn btn-success mt-3 float-right">{{__('admin.approve')}}</a>
     @endif
 @endsection

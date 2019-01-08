@@ -17,4 +17,6 @@ return [
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'login' => 'Login',
     'remember_me' => 'Remember me',
+    'logout' => 'Logout',
+
 ];

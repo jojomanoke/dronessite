@@ -3,16 +3,16 @@
 @section('content')
     @php $records = count($forms); @endphp
     @if(Request::path() == 'forms/overview')
-        <a class="btn btn-success float-right mb-4" href="{{url('forms/submit/new')}}">New</a>
+        <a class="btn btn-success float-right mb-4" href="{{url('forms/submit/new')}}">{{__('strings.new')}}</a>
     @endif
     <table class="table">
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Time added</th>
-            @if(!is_mobile())<th scope="col">Last updated</th>@endif
-            <th scope="col">Completed</th>
-            <th scope="col">Actions</th>
+            <th scope="col">{{__('forms.added')}}</th>
+            @if(!is_mobile())<th scope="col">{{__('forms.updated')}}</th>@endif
+            <th scope="col">{{__('forms.completed')}}</th>
+            <th scope="col">{{__('forms.actions')}}</th>
         </tr>
         </thead>
         <tbody>
@@ -32,23 +32,23 @@
                                     }
                             }
                         if($complete){
-                            echo 'Yes';
+                            echo __('strings.yes');
                         }
                         else{
-                            echo 'No';
+                            echo __('strings.no');
                         }
                     @endphp
                 </td>
                 <td>
                     @if(!is_mobile())
                         <div class="btn-group rounded" role="group" aria-label="Basic example">
-                            <button type="button" onclick="window.location.href= `{{url('/forms/submit/progress').'/'.$form->id}}`" class="btn btn-warning">@if($user->role_id == 1 && Request::path() != 'forms/overview') Show @else Edit @endif</button>
-                            <button type="button" data-toggle="modal" data-target="#confirm-{{$form->id}}" class="btn btn-secondary">Delete</button>
+                            <button type="button" onclick="window.location.href= `{{url('/forms/submit/progress').'/'.$form->id}}`" class="btn btn-warning">@if($user->role_id == 1 && Request::path() != 'forms/overview') {{__('strings.show')}} @else {{__('strings.edit')}} @endif</button>
+                            <button type="button" data-toggle="modal" data-target="#confirm-{{$form->id}}" class="btn btn-secondary">{{__('strings.delete')}}</button>
                         </div>
 
                     @else
-                        <button type="button" onclick="window.location.href= `{{url('/forms/submit/progress').'/'.$form->id}}`" class="btn btn-warning w-100">@if($user->role_id == 1 && Request::path() != 'forms/overview') Show @else Edit @endif</button>
-                        <button type="button" data-toggle="modal" data-target="#confirm-{{$form->id}}" class="btn btn-secondary w-100">Delete</button>
+                        <button type="button" onclick="window.location.href= `{{url('/forms/submit/progress').'/'.$form->id}}`" class="btn btn-warning w-100">@if($user->role_id == 1 && Request::path() != 'forms/overview') {{__('strings.show')}} @else {{__('strings.edit')}} @endif</button>
+                        <button type="button" data-toggle="modal" data-target="#confirm-{{$form->id}}" class="btn btn-secondary w-100">{{__('strings.delete')}}</button>
                     @endif
                 </td>
                 {{--onclick="window.location.href= `{{url('/forms/delete/'.$form->id)}}`"--}}

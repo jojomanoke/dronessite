@@ -17,5 +17,5 @@ return [
     'throttle' => 'Te veel pogingen gedaan. Probeer het opnieuw in :seconds seconds.',
     'login' => 'Login',
     'remember_me' => 'Herinner mij',
-
+    'logout' => 'Uitloggen',
 ];

@@ -11,5 +11,6 @@ return [
     'name'              =>          'Naam',
     'email'             =>          'E-mail adres',
     'studentnumber'     =>          'Student Number',
-    'confirm'           =>          'Confirm'
+    'confirm'           =>          'Confirm',
+    'password'          =>          'Password'
 ];

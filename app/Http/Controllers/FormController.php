@@ -64,7 +64,7 @@ class FormController extends Controller
 
         $user = \Auth::user();
         if($id != null){
-            return redirect('/forms/submit/progress');
+            return redirect('/forms/submit/progress')->with('form', $form);
         }
         else {
             return view('forms.submitOverview', ['form' => $form, 'user' => $user]);
