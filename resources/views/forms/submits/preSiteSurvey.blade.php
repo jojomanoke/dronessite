@@ -37,7 +37,17 @@
         {{Form::label('date_work_required', 'Date work required')}}
         {{Form::date('date_work_required', \Carbon\Carbon::parse($data->date_work_required)->format('Y-m-d'), ['class' => 'form-date'])}}
     </div>
-    {{Form::submit('Save', ['class' => 'btn btn-success'])}}
+    <div class="pb-5">
+        {{Form::submit(__('strings.save'), ['class' => 'btn btn-success float-left'])}}
         {{Form::close()}}
+
+        @isset($id)
+            {{Form::open(['url' => 'forms/save/pre_site_survey'.'/'.$id.'/'.'submit', 'files' => true])}}
+        @else
+            {{Form::open(['url' => 'forms/save/pre_site_survey'.'/'.'submit', 'files' => true])}}
+        @endisset
+        {{Form::submit(__('forms.send'), ['class' => 'btn btn-warning float-right'])}}
+        {{Form::close()}}
+    </div>
 
 @endsection

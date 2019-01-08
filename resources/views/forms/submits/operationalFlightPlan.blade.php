@@ -46,14 +46,12 @@
     {{Form::submit(__('strings.save'), ['class' => 'btn btn-success float-left'])}}
     {{Form::close()}}
 
-
-
     @isset($id)
-        {{Form::open(['url' => 'forms/save/operational_flight_plan'.'/'.$id.'submit', 'files' => true])}}
+        {{Form::open(['url' => 'forms/save/operational_flight_plan'.'/'.$id.'/'.'submit', 'files' => true])}}
     @else
-        {{Form::open(['url' => 'forms/save/operational_flight_plan'.'submit', 'files' => true])}}
+        {{Form::open(['url' => 'forms/save/operational_flight_plan'.'/'.'submit', 'files' => true])}}
     @endisset
-    {{Form::submit(__('forms.submit'), ['class' => 'btn btn-warning float-right'])}}
+    {{Form::submit(__('forms.send'), ['class' => 'btn btn-warning float-right'])}}
     {{Form::close()}}
     </div>
 @endsection

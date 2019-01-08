@@ -11,5 +11,6 @@ return [
     'actions'           =>          'Actions',
     'edited'            =>          'This part has been edited',
     'not_submitted'     =>          'This part has not been submitted yet',
+    'send'              =>          'Send',
 
 ];

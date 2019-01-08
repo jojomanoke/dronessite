@@ -11,5 +11,6 @@ return [
     'actions'           =>          'Acties',
     'edited'            =>          'Dit gedeelte is aangepast',
     'not_submitted'     =>          'Dit gedeelte is nog niet aangemaakt',
+    'send'              =>          'Versturen',
 
 ];

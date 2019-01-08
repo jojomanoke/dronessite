@@ -13,9 +13,10 @@ return [
     |
     */
 
-    'failed' => 'Deze gegevens kloppen niet.',
-    'throttle' => 'Te veel pogingen gedaan. Probeer het opnieuw in :seconds seconds.',
-    'login' => 'Login',
-    'remember_me' => 'Herinner mij',
-    'logout' => 'Uitloggen',
+    'failed'            =>          'Deze gegevens kloppen niet.',
+    'throttle'          =>          'Te veel pogingen gedaan. Probeer het opnieuw in :seconds seconds.',
+    'login'             =>          'Login',
+    'remember_me'       =>          'Herinner mij',
+    'logout'            =>          'Uitloggen',
+    'register'          =>          'Registreren',
 ];

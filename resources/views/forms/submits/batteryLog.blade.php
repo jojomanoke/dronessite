@@ -48,7 +48,17 @@
     </div>
 
 
-    {{Form::submit('Save', ['class' => 'btn btn-success'])}}
-    {{Form::close()}}
+    <div class="pb-5">
+        {{Form::submit(__('strings.save'), ['class' => 'btn btn-success float-left'])}}
+        {{Form::close()}}
+
+        @isset($id)
+            {{Form::open(['url' => 'forms/save/battery_log'.'/'.$id.'/'.'submit', 'files' => true])}}
+        @else
+            {{Form::open(['url' => 'forms/save/battery_log'.'/'.'submit', 'files' => true])}}
+        @endisset
+        {{Form::submit(__('forms.send'), ['class' => 'btn btn-warning float-right'])}}
+        {{Form::close()}}
+    </div>
 
 @endsection

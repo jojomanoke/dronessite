@@ -43,7 +43,7 @@
                         <a class="nav-link" href="{{ route('login') }}">{{ __('auth.login') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('register.register') }}</a>
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('auth.register') }}</a>
                     </li>
                 @else
                     @if(Auth::user()->role_id == 1)

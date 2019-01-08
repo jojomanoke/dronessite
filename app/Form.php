@@ -12,7 +12,7 @@ class Form extends Model
         return $this->hasOne('App\User', 'id', 'foreign_id');
     }
 
-    public function operational_flight_plan(){
+    public function foreign_operational_flight_plan(){
         return $this->hasOne('App\OperationalFlightPlan', 'id', 'operational_flight_plan');
     }
 

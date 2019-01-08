@@ -37,7 +37,7 @@ Route::prefix('forms')->middleware('auth')->group(function(){
          * Routes for the actual forms
          */
         Route::get('progress/{id?}', 'FormController@submitOverview');
-        Route::get('operational_flight_plan', 'FormController@operational_flight_plan_edit');
+        Route::get('operational_flight_plan', 'FormController@operational_flight_plan');
         Route::get('pre_site_survey/', 'FormController@pre_site_survey');
         Route::get('pre_flight_checklist/', 'FormController@pre_flight_checklist');
         Route::get('on_site_survey/', 'FormController@on_site_survey');
@@ -48,6 +48,21 @@ Route::prefix('forms')->middleware('auth')->group(function(){
         Route::get('arrival_flight_checklist/', 'FormController@arrival_flight_checklist');
         Route::get('post_flight_checklist/', 'FormController@post_flight_checklist');
         Route::get('battery_log/', 'FormController@battery_log');
+
+
+        Route::get('operational_flight_plan/submit/', 'FormController@operational_flight_plan');
+        Route::get('pre_site_survey/submit/', 'FormController@pre_site_survey');
+        Route::get('pre_flight_checklist/submit/', 'FormController@pre_flight_checklist');
+        Route::get('on_site_survey/submit/', 'FormController@on_site_survey');
+        Route::get('maintenance_log/submit/', 'FormController@maintenance_log');
+        Route::get('incident_log/submit/', 'FormController@incident_log');
+        Route::get('embarkation_checklist/submit/', 'FormController@embarkation_checklist');
+        Route::get('aircraft_pilot_and_crew_flight_logs/submit/', 'FormController@aircraft_pilot_and_crew_flight_logs');
+        Route::get('arrival_flight_checklist/submit/', 'FormController@arrival_flight_checklist');
+        Route::get('post_flight_checklist/submit/', 'FormController@post_flight_checklist');
+        Route::get('battery_log/submit/', 'FormController@battery_log');
+
+
         Route::get('new/', 'FormController@resetSubmit');
     });
     Route::prefix('save')->group(function(){

@@ -39,7 +39,8 @@ class FormController extends Controller
     public function submitOverview(Request $request, $id = null)
     {
         $check_array[] = null;
-        if(null != $id) {
+        $user = \Auth::user();
+        if($id != null) {
             $current = 0;
             $request->session()->put('isSubmitting', $id);
             $form = Form::find(session()->get('isSubmitting'));
@@ -54,42 +55,69 @@ class FormController extends Controller
             foreach($check_array as $key => $value){
                 $request->session()->put($key, $value);
             }
+            if($form->user_id == null){
+                return json_encode($form);
+                $form->user_id = $user->id;
+                $form->save();
+            }
         }
         if(null != $request->session()->get('isSubmitting')){
             $form = Form::find(session()->get('isSubmitting'));
         }
-        else{
-            $form = new Form();
-        }
 
-        $user = \Auth::user();
+
         if($id != null){
-            return redirect('/forms/submit/progress')->with('form', $form);
+            return redirect('/forms/submit/progress')->with(['form' => $form, 'user' => $user]);
         }
         else {
-            return view('forms.submitOverview', ['form' => $form, 'user' => $user]);
+            return view('forms.submitOverview')->with(['form' => $form, 'user' => $user]);
         }
     }
 
-    public function resetSubmit(Request $r){
-        $check_array[] = null;
-        $current = 0;
-        $form = Form::all()->first();
-        $r->session()->put('isSubmitting', null);
+    public function resetSubmit(){
+        $form = Form::find(session()->get('isSubmitting'));
+
         if($form != null){
-            foreach($form->getAttributes() as $attr => $value){
-                if($current > 1 && $current < 13){
-                    $r->session()->put($attr, null);
+            $current = 0;
+            $empty_count = 0;
+
+            foreach($form->getAttributes() as $attr => $value)
+            {
+                if($current > 1 && $current < 13)
+                {
+                    if($value == null)
+                    {
+                        $empty_count++;
+                    }
                 }
                 $current ++;
             }
+            if($empty_count != 11){
+                $current = 0;
+                foreach($form->getAttributes() as $attr => $value){
+                    if($current > 1 && $current < 13){
+                        session()->put($attr, null);
+                    }
+                    $current ++;
+                }
+                $user = \Auth::user();
+                $form = new Form();
+                $form->user_id = $user->id;
+                $form->save();
+                session()->put('isSubmitting', $form->id);
+                $form = Form::find(session()->get('isSubmitting'));
+            }
         }
-
-        array_pull($check_array, 0);
-        return redirect('/forms/submit/progress');
+        else
+        {
+            $form = new Form();
+            $form->save();
+            session()->put('isSubmitting', $form->id);
+        }
+        return redirect('/forms/submit/progress')->with('form', $form);
     }
 
-    public function operational_flight_plan_edit()
+    public function operational_flight_plan()
     {
         if(session()->get('operational_flight_plan') != null){
             $id = session()->get('operational_flight_plan');
@@ -168,6 +196,11 @@ class FormController extends Controller
         $data->position_of_crew = $r->input('position_of_crew');
         $data->flightbox = $r->input('flightbox');
         $data->alternate_landing_sites = $r->input('alternate_landing_sites');
+
+        if($final != null){
+            $data->submitted = 1;
+        }
+
         $data->save();
 
         if(session()->get('operational_flight_plan') === null){
@@ -248,6 +281,10 @@ class FormController extends Controller
         $data->military_control = $r->input('military_control');
         $data->notice_to_airmen = $r->input('notice_to_airmen');
 
+        if($final != null){
+            $data->submitted = 1;
+        }
+
         $data->save();
         if(session()->get('pre_site_survey') === null){
             session()->put('pre_site_survey', $data->id);
@@ -318,6 +355,10 @@ class FormController extends Controller
         $data->communication = $r->input('communication');
         $data->landing = $r->input('landing');
 
+        if($final != null){
+            $data->submitted = 1;
+        }
+
         $data->save();
 
         if(session()->get('pre_flight_checklist') === null){
@@ -335,6 +376,11 @@ class FormController extends Controller
         }
         $form->user_id = Auth::user()->id;
         $form->pre_flight_checklist = $data->id;
+
+        if($final != null){
+            $data->submitted = 1;
+        }
+
         $form->save();
 
         return redirect(url('forms/submit/progress'));
@@ -388,6 +434,10 @@ class FormController extends Controller
         $data->emergency_area = $r->input('emergency_area');
         $data->holding_area = $r->input('holding_area');
 
+        if($final != null){
+            $data->submitted = 1;
+        }
+
         $data->save();
 
         if(session()->get('on_site_survey') === null){
@@ -405,6 +455,7 @@ class FormController extends Controller
         }
         $form->user_id = Auth::user()->id;
         $form->on_site_survey = $data->id;
+
         $form->save();
 
         return redirect(url('forms/submit/progress'));
@@ -443,6 +494,10 @@ class FormController extends Controller
         $data->parts_replaced = $r->input('parts_replaced');
         $data->system_tested = $r->input('system_tested');
         $data->notes = $r->input('notes');
+
+        if($final != null){
+            $data->submitted = 1;
+        }
 
         $data->save();
 
@@ -499,6 +554,10 @@ class FormController extends Controller
         $data->incident_details = $r->input('incident_details');
         $data->action_taken = $r->input('action_taken');
         $data->notes = $r->input('notes');
+
+        if($final != null){
+            $data->submitted = 1;
+        }
 
         $data->save();
 
@@ -592,6 +651,10 @@ class FormController extends Controller
         $data->spare_props = $r->input('spare_props');
         $data->small_socket_set = $r->input('small_socket_set');
 
+        if($final != null){
+            $data->submitted = 1;
+        }
+
         $data->save();
 
         if(session()->get('embarkation_checklist') === null){
@@ -653,6 +716,10 @@ class FormController extends Controller
         $data->location = $r->input('location');
         $data->purpose_of_flight = $r->input('purpose_of_flight');
         $data->comments = $r->input('comments');
+
+        if($final != null){
+            $data->submitted = 1;
+        }
 
         $data->save();
 
@@ -718,6 +785,10 @@ class FormController extends Controller
         $data->fire_extinguisher = $r->input('fire_extinguisher');
         $data->cordens_signs_and_safety_tape = $r->input('cordens_signs_and_safety_tape');
 
+        if($final != null){
+            $data->submitted = 1;
+        }
+
         $data->save();
 
         if(session()->get('arrival_flight_checklist') === null){
@@ -777,6 +848,10 @@ class FormController extends Controller
         $data->memory_card = $r->input('memory_card');
         $data->review = $r->input('review');
 
+        if($final != null){
+            $data->submitted = 1;
+        }
+
         $data->save();
 
         if(session()->get('post_flight_checklist') === null){
@@ -833,6 +908,10 @@ class FormController extends Controller
         $data->pre_flight = $r->input('pre_flight');
         $data->notes = $r->input('notes');
 
+        if($final != null){
+            $data->submitted = 1;
+        }
+
         $data->save();
 
         if(session()->get('battery_log') === null){
@@ -867,9 +946,7 @@ class FormController extends Controller
 
         $form = Form::all()->where('id', $id)->first();
         $form->delete();
-        return json_encode($form);
-
-//        return redirect()->back();
+        return redirect()->back();
     }
 
     public function contactSubmit(){

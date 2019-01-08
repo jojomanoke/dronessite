@@ -14,19 +14,16 @@
     'battery_log'
     );
 $current = 0;
-if(isset($data)){
-    $form = toArray($form);
-}
-else{
-    $data = null;
-}
+
+//echo print_r($form->$parts[0]);
 @endphp
+
 
 
 
 @section('content')
     @while(count($parts) > $current)
-        @php $part = $parts[$current]; $f = $form->$part @endphp
+        @php $part = $parts[$current]; $f = $form->foreign_.$part; echo json_encode($form->foreign_.$part) @endphp
         @csrf
         <div id="accordion_{{$current}}">
             <div class="card border-primary">
@@ -37,11 +34,11 @@ else{
                         </a>
                     </h5>
                 </div>
-                {{--{{json_encode($f['submitted'])}}--}}
+
                 <div id="collapse_{{$current}}" class="collapse show" aria-labelledby="heading_{{$current}}" data-parent="#accordion_{{$current}}">
                     <div class="card-body bg-dark-primary">
                         <div class="row">
-                            @if($f['submitted'] == 1)
+                            @if( 1)
                                 <div class="col float-left">{{__('forms.submitted')}}</div>
                             @elseif(session()->get($part) != null)
                                 <div class="col float-left">{{__('forms.edited')}}</div>
