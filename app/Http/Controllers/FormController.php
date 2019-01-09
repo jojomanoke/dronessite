@@ -56,7 +56,6 @@ class FormController extends Controller
                 $request->session()->put($key, $value);
             }
             if($form->user_id == null){
-                return json_encode($form);
                 $form->user_id = $user->id;
                 $form->save();
             }

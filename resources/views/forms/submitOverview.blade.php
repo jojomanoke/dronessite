@@ -19,8 +19,19 @@ $current = 0;
 @endphp
 
 
+@php
+    $c = 0;
+    foreach($form->getAttributes() as $attr => $value)
+    {
+        if($current > 1 && $current < 13)
+        {
+            echo $attr;
+        }
+        $c ++;
+    }
 
 
+@endphp
 @section('content')
     @while(count($parts) > $current)
         @php $part = $parts[$current]; $f = $form->foreign_.$part; echo json_encode($form->foreign_.$part) @endphp
