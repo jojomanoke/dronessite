@@ -97,4 +97,6 @@ Route::prefix('admin')->group(function(){
 
     Route::get('/users', 'AdminController@users');
     Route::get('/{id}/all', 'AdminController@all_user_forms');
+    Route::get('/{id}/edit', 'AdminController@edit_user');
+
 });

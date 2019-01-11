@@ -22,4 +22,8 @@ class AdminController extends Controller
 //        return json_encode($user);
         return view('forms.overview')->with(['forms' => $forms, 'user' => $user]);
     }
+
+    public function edit_user($id){
+        return null;
+    }
 }

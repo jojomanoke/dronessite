@@ -12,5 +12,6 @@ return [
     'edited'            =>          'This part has been edited',
     'not_submitted'     =>          'This part has not been submitted yet',
     'send'              =>          'Send',
+    'show_submitted'    =>          'All forms',
 
 ];
