@@ -24,6 +24,7 @@ class AdminController extends Controller
     }
 
     public function edit_user($id){
-        return null;
+        $user = User::find("id", $id);
+        return view('admin.editUser')->with(['student' => $user]);
     }
 }
