@@ -1,5 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-    {{json_encode($user)}}
+    @php json_encode($user); @endphp
 @endsection
+}
