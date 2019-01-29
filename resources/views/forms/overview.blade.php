@@ -8,7 +8,7 @@
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">#</th>
+            @if($user->role_id == 1)<th scope="col">#</th>@else<th scope="col">{{__('user.studentnumber')}}</th>@endif
             <th scope="col">{{__('forms.added')}}</th>
             @if(!is_mobile())<th scope="col">{{__('forms.updated')}}</th>@endif
             <th scope="col">{{__('forms.completed')}}</th>
@@ -19,7 +19,7 @@
 
         @foreach($forms as $key => $form)
             <tr>
-                <th scope="row">{{$loop->iteration}}</th>
+                @if($user->role_id == 1)<th scope="row">{{$loop->iteration}}</th>@else<th scope="col">{{$form->user()->student_number}}</th>@endif
                 <td>{{$form->created_at}}</td>
                 @if(!is_mobile())<td>{{$form->updated_at}}</td>@endif
                 <td>
