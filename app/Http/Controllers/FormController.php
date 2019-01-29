@@ -32,7 +32,6 @@ class FormController extends Controller
         }
 
         $user = Auth::user();
-//        return json_encode($user);
         return view('forms.overview')->with(['user' => $user, 'forms' => $forms]);
     }
 
@@ -43,7 +42,11 @@ class FormController extends Controller
         $user = \Auth::user();
 
 
-        if($id != null) {
+        if($id != null || session()->get('isSubmitting') != null) {
+
+            if($id == null && session()->get('isSubmitting') != null){
+                $id = session()->get('isSubmitting');
+            }
             $current = 0;
             $request->session()->put('isSubmitting', $id);
             $form = Form::find(session()->get('isSubmitting'));
@@ -63,55 +66,33 @@ class FormController extends Controller
                 $form->save();
             }
         }
-        else{
+        elseif($id == null && $request->session()->get('isSubmitting') == null){
             $form = New Form();
             $form->user_id = $user->id;
             $form->save();
+            session()->put('isSubmitting', $form->id);
+            $form = Form::find(session()->get('isSubmitting'));
         }
-        if(null != $request->session()->get('isSubmitting')){
+
+        elseif($request->session()->get('isSubmitting') == null){
+            $form = New Form();
+            $form->user_id = $user->id;
+            $form->save();
+            session()->put('isSubmitting', $form->id);
             $form = Form::find(session()->get('isSubmitting'));
         }
 
         else{
             session()->put('isSubmitting', $form->id);
+            $form = Form::find(session()->get('isSubmitting'));
         }
-
-
-//
-//        return json_encode($form->operational_flight_plan());
 
         $columns = $form->getTableColumns();
         $columns = removeElement($columns, ['id', 'user_id', 'created_at', 'updated_at']);
 
-        $i = 0;
-        $form_with_values[] = null;
-        foreach ($check_array as $key => $value){
-            if($value == null){
-                unset($check_array[$key]);
-            }
-            $i++;
-        }
-        $i = 0;
-        $add_to_values[] = null;
-        foreach ($check_array as $key => $value){
-            $add_to_values[$i] = $key;
-            $i++;
-        }
 
-        $form_with_values = Form::all()->where('id',session()->get('isSubmitting'))->where('user_id',$user->id);
-//        echo '<pre>'.json_encode($form_with_values).'</pre>';
-        foreach ($form_with_values as $forms){
-            foreach ($add_to_values as $val) {
-                echo '';
-            }
-        }
+        return view('forms.submitOverview', ['form' => $form, 'user' => $user, 'columns' => $columns]);
 
-        if($id != null){
-            return redirect('/forms/submit/progress')->with(['form' => $form, 'user' => $user, 'columns' => $columns]);
-        }
-        else {
-            return view('forms.submitOverview')->with(['form' => $form, 'user' => $user, 'columns' => $columns]);
-        }
     }
 
     public function resetSubmit(){
