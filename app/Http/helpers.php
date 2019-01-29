@@ -17,4 +17,15 @@ if (! function_exists('show_route')) {
         }
 
     }
+
+    function removeElement($array,$keys) {
+        foreach ($keys as $key) {
+            if (($key = array_search($key, $array)) !== false) {
+                unset($array[$key]);
+            }
+        }
+        $array = array_flatten($array);
+        return $array;
+    }
+
 }

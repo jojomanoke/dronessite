@@ -8,8 +8,4 @@ class BatteryLog extends Model
 {
     public $timestamps = false;
     public $table = 'battery_log';
-
-    public function form(){
-        return $this->belongsTo('App\Form', 'battery_log');
-    }
 }

@@ -39,7 +39,10 @@ class FormController extends Controller
     public function submitOverview(Request $request, $id = null)
     {
         $check_array[] = null;
+
         $user = \Auth::user();
+
+
         if($id != null) {
             $current = 0;
             $request->session()->put('isSubmitting', $id);
@@ -60,16 +63,54 @@ class FormController extends Controller
                 $form->save();
             }
         }
+        else{
+            $form = New Form();
+            $form->user_id = $user->id;
+            $form->save();
+        }
         if(null != $request->session()->get('isSubmitting')){
             $form = Form::find(session()->get('isSubmitting'));
         }
 
+        else{
+            session()->put('isSubmitting', $form->id);
+        }
+
+
+//
+//        return json_encode($form->operational_flight_plan());
+
+        $columns = $form->getTableColumns();
+        $columns = removeElement($columns, ['id', 'user_id', 'created_at', 'updated_at']);
+
+        $i = 0;
+        $form_with_values[] = null;
+        foreach ($check_array as $key => $value){
+            if($value == null){
+                unset($check_array[$key]);
+            }
+            $i++;
+        }
+        $i = 0;
+        $add_to_values[] = null;
+        foreach ($check_array as $key => $value){
+            $add_to_values[$i] = $key;
+            $i++;
+        }
+
+        $form_with_values = Form::all()->where('id',session()->get('isSubmitting'))->where('user_id',$user->id);
+//        echo '<pre>'.json_encode($form_with_values).'</pre>';
+        foreach ($form_with_values as $forms){
+            foreach ($add_to_values as $val) {
+                echo '';
+            }
+        }
 
         if($id != null){
-            return redirect('/forms/submit/progress')->with(['form' => $form, 'user' => $user]);
+            return redirect('/forms/submit/progress')->with(['form' => $form, 'user' => $user, 'columns' => $columns]);
         }
         else {
-            return view('forms.submitOverview')->with(['form' => $form, 'user' => $user]);
+            return view('forms.submitOverview')->with(['form' => $form, 'user' => $user, 'columns' => $columns]);
         }
     }
 
@@ -949,10 +990,10 @@ class FormController extends Controller
     }
 
     public function contactSubmit(){
-        
 
 
-    return redirect(url('home'));
+
+        return redirect(url('home'));
     }
 
 

@@ -1,73 +1,40 @@
 @extends('layouts.master')
-@php
-    $parts = array(
-    'operational_flight_plan',
-    'pre_site_survey',
-    'pre_flight_checklist',
-    'on_site_survey',
-    'maintenance_log',
-    'incident_log',
-    'embarkation_checklist',
-    'aircraft_pilot_and_crew_flight_logs',
-    'arrival_flight_checklist',
-    'post_flight_checklist',
-    'battery_log'
-    );
-$current = 0;
-
-//echo print_r($form->$parts[0]);
-@endphp
-
-
-@php
-    $c = 0;
-    foreach($form->getAttributes() as $attr => $value)
-    {
-        if($current > 1 && $current < 13)
-        {
-            echo $attr;
-        }
-        $c ++;
-    }
-
-
-@endphp
 @section('content')
-    @while(count($parts) > $current)
-        @php $part = $parts[$current]; $f = $form->foreign_.$part; echo json_encode($form->foreign_.$part) @endphp
+    {{--{{json_encode($form->operational_flight_plan()->first()->submitted)}}--}}
+    @foreach($columns as $key => $column)
+        @php $f = $form->$column()->first()['submitted'];@endphp
         @csrf
-        <div id="accordion_{{$current}}">
+        <div id="accordion_{{$key}}">
             <div class="card border-primary">
-                <div class="card-header bg-dark-primary" id="heading_{{$current}}">
+                <div class="card-header bg-dark-primary" id="heading_{{$key}}">
                     <h5 class="mb-0">
-                        <a class="text-black" style="cursor: pointer;" data-toggle="collapse" data-target="#collapse_{{$current}}" aria-expanded="true" aria-controls="collapse_{{$current}}">
-                            {{ucwords(str_replace('_', ' ', $parts[$current]))}}
+                        <a class="text-black" style="cursor: pointer;" data-toggle="collapse" data-target="#collapse_{{$key}}" aria-expanded="true" aria-controls="collapse_{{$key}}">
+                            {{ucwords(str_replace('_', ' ', $column))}}
                         </a>
                     </h5>
                 </div>
 
-                <div id="collapse_{{$current}}" class="collapse show" aria-labelledby="heading_{{$current}}" data-parent="#accordion_{{$current}}">
+                <div id="collapse_{{$key}}" class="collapse show" aria-labelledby="heading_{{$key}}" data-parent="#accordion_{{$key}}">
                     <div class="card-body bg-dark-primary">
                         <div class="row">
-                            @if( 1)
+                            @if($f)
                                 <div class="col float-left">{{__('forms.submitted')}}</div>
-                            @elseif(session()->get($part) != null)
+                            @elseif(session()->get($column) != null)
                                 <div class="col float-left">{{__('forms.edited')}}</div>
                                 <div class="col text-right float-right">
-                                    <a class="btn btn-warning" href="{{url('forms/submit'.'/'.$part)}}">{{__('strings.edit')}}</a>
+                                    <a class="btn btn-warning" href="{{url('forms/submit'.'/'.$column)}}">{{__('strings.edit')}}</a>
                                 </div>
                             @else
                                     <div class="col float-left">{{__('forms.not_submitted')}}</div>
                                     <div class="col float-right text-right">
-                                        <a class="btn btn-secondary" href="{{url('forms/submit'.'/'.$part)}}">{{__('strings.create')}}</a>
+                                        <a class="btn btn-secondary" href="{{url('forms/submit'.'/'.$column)}}">{{__('strings.create')}}</a>
                                     </div>
                             @endif
                         </div>
                     </div>
                 </div>
             </div>
-        @php $current++; @endphp
-    @endwhile
+    @endforeach
 
     @if($user->role_id == 1 && $form->user_id != $user->id)
                 <a href="{{url('/admin/approve'. $form->id)}}" class="btn btn-success mt-3 float-right">{{__('admin.approve')}}</a>
