@@ -24,7 +24,7 @@
                         <td>
                             <div class="btn btn-group">
                                 <a href="{{url('admin/'.$user->id.'/all')}}" class="btn btn-success">{{__('forms.show_submitted')}}</a>
-                                <a href="{{url('admin/'.$user->id.'/edit')}}" class="btn btn-secondary disabled">{{__('admin.edit_user')}}</a>
+                                <a href="{{url('admin/'.$user->id.'/edit')}}" class="btn btn-secondary disabled" aria-disabled="true">{{__('admin.edit_user')}}</a>
                             </div>
                         </td>
                     </tr>
