@@ -5,15 +5,19 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img class="d-block w-100" src='{!!asset("images/carousel/placeholder.jpg")!!}' alt="First slide">
+                <a>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi autem debitis dolorum earum enim esse ex hic ipsa, iure laboriosam laudantium odit, quaerat quasi recusandae voluptas voluptatum. Ab, quo!</a>
             </div>
             <div class="carousel-item">
                 <img class="d-block w-100" src='{!!asset("images/carousel/placeholder.jpg")!!}' alt="Second slide">
+                <a>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi autem debitis dolorum earum enim esse ex hic ipsa, iure laboriosam laudantium odit, quaerat quasi recusandae voluptas voluptatum. Ab, quo!</a>
             </div>
             <div class="carousel-item">
                 <img class="d-block w-100" src='{!!asset("images/carousel/placeholder.jpg")!!}' alt="Third slide">
+                <a>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi autem debitis dolorum earum enim esse ex hic ipsa, iure laboriosam laudantium odit, quaerat quasi recusandae voluptas voluptatum. Ab, quo!</a>
             </div>
             <div class="carousel-item">
                 <img class="d-block w-100" src='{!!asset("images/carousel/placeholder.jpg")!!}' alt="Fourth slide">
+                <a>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi autem debitis dolorum earum enim esse ex hic ipsa, iure laboriosam laudantium odit, quaerat quasi recusandae voluptas voluptatum. Ab, quo!</a>
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -26,7 +30,7 @@
         </a>
     </div>
     <div class="home-text">
-        <a>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi autem debitis dolorum earum enim esse ex hic ipsa, iure laboriosam laudantium odit, quaerat quasi recusandae voluptas voluptatum. Ab, quo!</a>
+
     </div>
 </div>
 @endsection
