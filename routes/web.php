@@ -90,7 +90,7 @@ Route::prefix('forms')->middleware('auth')->group(function(){
 
     Route::get('delete/{id?}', 'FormController@delete');
 });
-Route::prefix('admin')->group(function(){
+Route::prefix('admin')->middleware('auth')->group(function(){
     /*
      * Routes for the admin accounts
      */
