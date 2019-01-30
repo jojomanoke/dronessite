@@ -29,8 +29,10 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+    @break
     <div class="home-text">
-
+        <h1>Title</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam animi aspernatur beatae consequatur dicta doloribus excepturi explicabo nihil odit pariatur quod sapiente sed, similique. Adipisci error hic impedit incidunt non? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi autem debitis dolorum earum enim esse ex hic ipsa, iure laboriosam laudantium odit, quaerat quasi recusandae voluptas voluptatum. Ab, quo!</p>
     </div>
 </div>
 @endsection
