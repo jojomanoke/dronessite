@@ -24,8 +24,8 @@ class AdminController extends Controller
     }
 
     public function edit_user($id){
-        $user = User::find("id", $id);
+        $student = User::find("id", $id);
 //        return json_encode($user);
-        return view('admin.editUser')->with(['student' => $user]);
+        return view('admin.editUser')->with(['student' => $student]);
     }
 }
