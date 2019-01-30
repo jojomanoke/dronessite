@@ -25,6 +25,9 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+    <div class="home-text">
+        <a>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi autem debitis dolorum earum enim esse ex hic ipsa, iure laboriosam laudantium odit, quaerat quasi recusandae voluptas voluptatum. Ab, quo!</a>
+    </div>
 </div>
 @endsection
 
