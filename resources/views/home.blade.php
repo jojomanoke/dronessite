@@ -12,6 +12,9 @@
             <div class="carousel-item">
                 <img class="d-block w-100" src='{!!asset("images/carousel/placeholder.jpg")!!}' alt="Third slide">
             </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src='{!!asset("images/carousel/placeholder.jpg")!!}' alt="Fourth slide">
+            </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
